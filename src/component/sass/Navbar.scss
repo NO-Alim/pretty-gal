@@ -1,0 +1,232 @@
+$color-pri:  #FFFFFF;
+$color-bg-sec:  rgba(51, 51, 51, 1);
+$color-bg-hover:  rgba(51, 51, 51, 0.9);
+$color-font-pri:  rgba(20, 20, 20, 0.9);
+$color-font-sec:  #DDDDDD;
+$font-family:  "HP Simplified Light", "Helvetica", Arial, sans-serif;
+$font-family-url:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-base:  16px;
+
+$heading-ex: 50px;
+$heading: 40px;
+$h1: 35px;
+$h2: 30px;
+$h3: 25px;
+$h4: 22px;
+$font-base-lg: 18px;
+
+$margin-lg: 150px;
+$margin-md: 100px;
+$margin-semi-md: 70px;
+$margin-sm: 50px;
+$margin-ex-sm: 20px;
+
+$padding-lg: 150px;
+$padding-md: 100px;
+$padding-semi-md: 70px;
+$padding-sm: 50px;
+$padding-ex-sm: 20px;
+
+$extraMedium: 1100px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+$transition: all 0.3s ease-in-out;
+
+
+nav{
+    background-color: $color-bg-sec;
+    color: $color-pri;
+    font-family: $font-family;
+    z-index: 10;
+    position: relative;
+    .nav-container{
+        padding: $padding-ex-sm $padding-lg;
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: $extraMedium) {
+            padding: $padding-ex-sm $padding-semi-md;
+        }
+        @media screen and (max-width: $extraSmall) {
+            padding: $padding-ex-sm;
+        }
+        .logo-container{
+            flex: 2;
+            order: 1;
+            @media screen and (max-width: $medium) {
+                order: 2;
+                flex: 4;
+                text-align: center;
+            }
+            
+            a{
+                text-decoration: none;
+                color: $color-pri;
+                transition: $transition;
+                display: inline-block;
+                &:hover{
+                    color: $color-font-sec;
+                    transition: $transition;
+                }
+                &.active{
+                    color: $color-font-sec;
+                    transition: $transition;
+                }
+            }
+            h2{
+                font-size: 26px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 500;
+                letter-spacing: 5px;
+                @media screen and (max-width: $extraMedium) {
+                    font-size: 25px;
+                }
+            }
+
+        }
+        .link-container{
+            display: flex;
+            flex: 4;
+            order: 2;
+            transition: $transition;
+            @media screen and (max-width: $medium) {
+                position: fixed;
+                height: 100vh;
+                width: 50vw;
+                background: $color-bg-sec;
+                top: 0;
+                left: -100%;
+                padding: $padding-sm;
+                display: flex;
+            }
+            @media screen and (max-width: $extraSmall) {
+                position: fixed;
+                height: 100vh;
+                width: 100%;
+                background: $color-bg-sec;
+                top: 0;
+                left: -100%;
+                padding: $padding-sm;
+                display: flex;
+            }
+
+            &.active{
+                left: 0;
+            }
+            ul{
+                flex: 1;
+                display: flex;
+                justify-content: space-between;
+                @media screen and (max-width: $medium) {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                }
+                li{
+                    list-style: none;
+
+                    a{
+                        text-decoration: none;
+                        color: $color-pri;
+                        font-family: $font-family-url;
+                        font-size: $font-base-lg;
+                        transition: $transition;
+
+                        &:hover{
+                            color: $color-font-sec;
+                        }
+                        &.active{
+                            color: $color-font-sec;
+                        }
+                        @media screen and (max-width: $medium) {
+                            font-size: 25px;
+                            margin: $margin-ex-sm 0;
+                            display: block;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+            .menu-container{
+                display: none;
+                width: 30px;
+                @media screen and (max-width: $extraSmall) {
+                    display: block;
+                }
+                .menus{
+                    display: flex;
+                    flex-direction: column;
+                    .menu{
+                        background: $color-pri;
+                        width: 30px;
+                        height: 3px;
+                        margin: 3px 0;
+                        transition: all 0.3s ease-in-out;
+                    }
+                    &.active .menu:first-child{
+                        transform: rotate(-45deg) translate(-9px, 4px);
+                    }
+                    &.active .menu:nth-child(2){
+                        opacity: 0;
+                    }
+                    &.active .menu:last-child{
+                        transform: rotate(45deg) translate(-8px, -5px);
+                    }
+                }
+            }
+        }
+        .user-container{
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            order: 3;
+            align-items: center;
+            @media screen and (max-width: $medium) {
+                order: 1;
+                justify-content: flex-start;
+            }
+            .user-form{
+                margin-left: $margin-ex-sm;
+                @media screen and (max-width: $medium) {
+                    display: none;
+                }
+            }
+            .cart{
+                font-size: $h3;
+            }
+            
+        }
+
+        .menu-one-container{
+            flex: 1;
+            width: 30px;
+            order: 4;
+            display: none;
+            @media screen and (max-width: $medium) {
+                display: block;
+                display: flex;
+                justify-content: flex-end;
+            }
+            .menus-one{
+                display: flex;
+                flex-direction: column;
+                .menu-one{
+                    background: $color-pri;
+                    width: 30px;
+                    height: 3px;
+                    margin: 3px 0;
+                    transition: all 0.3s ease-in-out;
+                }
+                &.active .menu-one:first-child{
+                    transform: rotate(-45deg) translate(-9px, 4px);
+                }
+                &.active .menu-one:nth-child(2){
+                    opacity: 0;
+                }
+                &.active .menu-one:last-child{
+                    transform: rotate(45deg) translate(-8px, -5px);
+                }
+            }
+        }
+    }
+}
