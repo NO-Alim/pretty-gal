@@ -35,50 +35,20 @@ $extraSmall: 450px;
 $transition: all 0.3s ease-in-out;
 
 
-.stockists-container{
-    background-color: $color-pri;
-    text-align: center;
-    padding: $padding-sm 0;
-    h1{
-        font-size: $heading;
+.return{
+    h2{
+        font-size: $h2;
         color: $color-font-pri;
-        margin-bottom: $margin-sm;
+        margin-bottom: $margin-ex-sm;
         display: inline-block;
         letter-spacing: 5px;
     }
-    .main-para{
+    p{
         font-family: $font-family;
         width: 70%;
         margin: 0 auto;
-        padding-bottom: $padding-sm;
         @media screen and (max-width: $semiMedium) {
             width: 100%;
-        }
-    }
-    .stockists{
-        padding: 0 $padding-lg;
-        overflow: hidden;
-        @media screen and (max-width: $extraMedium) {
-            padding: 0 $padding-semi-md;
-        }
-        @media screen and (max-width: $extraSmall) {
-            padding: 0 $padding-ex-sm;
-        }
-        .stockist-store{
-            margin-bottom: $margin-sm;
-            h3{
-                font-size: $h4;
-                letter-spacing: 2px;
-                font-family: Arial, Helvetica, sans-serif;
-                color: $color-bg-sec;
-                margin-bottom: $margin-ex-sm;
-            }
-            p{
-                font-size: $font-base;
-                letter-spacing: 1px;
-                font-family: $font-family;
-                margin-bottom: 5px;
-            }
         }
     }
 }

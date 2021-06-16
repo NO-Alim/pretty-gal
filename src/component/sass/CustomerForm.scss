@@ -1,0 +1,105 @@
+$color-pri:  #FFFFFF;
+$color-bg-sec:  rgba(51, 51, 51, 1);
+$color-bg-hover:  rgba(51, 51, 51, 0.9);
+$color-font-pri:  rgba(20, 20, 20, 0.9);
+$color-font-sec:  #DDDDDD;
+$font-family:  "HP Simplified Light", "Helvetica", Arial, sans-serif;
+$font-family-url:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-base:  16px;
+
+$heading-ex: 50px;
+$heading: 40px;
+$h1: 35px;
+$h2: 30px;
+$h3: 25px;
+$h4: 22px;
+$font-base-lg: 18px;
+
+$margin-lg: 150px;
+$margin-md: 100px;
+$margin-semi-md: 70px;
+$margin-sm: 50px;
+$margin-ex-sm: 20px;
+
+$padding-lg: 150px;
+$padding-md: 100px;
+$padding-semi-md: 70px;
+$padding-sm: 50px;
+$padding-ex-sm: 20px;
+
+$extraMedium: 1100px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+$transition: all 0.3s ease-in-out;
+
+
+.Form-container{
+    display: flex;
+    font-family: $font-family;
+    color: $color-font-pri;
+    @media screen and (max-width: $small) {
+        flex-direction: column;
+    }
+
+    .content{
+        flex: 1;
+        p:first-child{
+            margin-bottom: $margin-sm;
+        }
+        strong{
+            display: block;
+            margin-bottom: $margin-ex-sm;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    }
+    .form{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            @media screen and (max-width: $semiMedium) {
+                width: 90%;
+            }
+            @media screen and (max-width: $small) {
+                width: 100%;
+                margin-top: $margin-sm;
+            }
+        }
+        input,
+        textarea{
+            margin-bottom: 10px;
+            padding: 5px;
+            resize: none;
+            background-color: transparent;
+            border: 1px solid $color-bg-sec;
+            transition: $transition;
+            font-family: Arial, Helvetica, sans-serif;
+            &:hover{
+                background-color: $color-font-sec;
+            }
+            &:focus{
+                background-color: $color-font-sec;
+                outline: none;
+            }
+        }
+        textarea{
+            min-height: 100px;
+        }
+        input[type=submit]{
+            width: 100px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $color-pri;
+            background-color: $color-bg-sec;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}

@@ -8,6 +8,7 @@ import CustomerCare from './pages/CustomerCare'
 import Stockists from './pages/Stockists'
 import Error from './pages/Error'
 import Footer from './component/Footer';
+import SingleProduct from './pages/SingleProduct'
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/stockists">
           <Stockists />
+        </Route>
+        <Route path="/product/:id">
+          <SingleProduct />
         </Route>
         <Route path="*">
           <Error />

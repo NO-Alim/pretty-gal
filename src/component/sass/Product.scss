@@ -1,0 +1,97 @@
+$color-pri:  #FFFFFF;
+$color-bg-sec:  rgba(51, 51, 51, 1);
+$color-bg-hover:  rgba(51, 51, 51, 0.9);
+$color-font-pri:  rgba(20, 20, 20, 0.9);
+$color-font-sec:  #DDDDDD;
+$font-family:  "HP Simplified Light", "Helvetica", Arial, sans-serif;
+$font-family-url:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-base:  16px;
+
+$heading-ex: 50px;
+$heading: 40px;
+$h1: 35px;
+$h2: 30px;
+$h3: 25px;
+$h4: 22px;
+$font-base-lg: 18px;
+
+$margin-lg: 150px;
+$margin-md: 100px;
+$margin-semi-md: 70px;
+$margin-sm: 50px;
+$margin-ex-sm: 20px;
+
+$padding-lg: 150px;
+$padding-md: 100px;
+$padding-semi-md: 70px;
+$padding-sm: 50px;
+$padding-ex-sm: 20px;
+
+$extraMedium: 1100px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+$transition: all 0.3s ease-in-out;
+
+
+.product{
+    display: block;
+    width: 100%;
+    background-color: $color-font-sec;
+    overflow: hidden;
+    transition: $transition;
+    &:hover{
+        img{
+            transition: $transition;
+            transform: scale(1.1);
+        }
+
+        .view{
+            bottom: 0;
+        }
+    }
+    .img-container{
+        display: block;
+        overflow: hidden;
+        position: relative;
+        img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        padding: 5px 10px;
+        z-index: 2;
+        h4{
+            text-align: left;
+            margin: 5px 0;
+            font-size: $h4;
+            font-weight: lighter;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        span{
+            text-align: left;
+            font-size: $font-base;
+            font-family: $font-family-url;
+        }
+    }
+    .view{
+        position: absolute;
+        bottom: -100%;
+        background-color: rgba(235, 235, 235, 0.7);
+        width: 100%;
+        padding: $padding-ex-sm 0;
+        transition: $transition;
+
+        a{
+            text-decoration: none;
+            color: $color-font-pri;
+            font-size: $font-base-lg;
+            font-family: $font-family-url;
+        }
+    }
+}

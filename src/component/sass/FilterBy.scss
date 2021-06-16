@@ -1,0 +1,102 @@
+$color-pri:  #FFFFFF;
+$color-bg-sec:  rgba(51, 51, 51, 1);
+$color-bg-hover:  rgba(51, 51, 51, 0.9);
+$color-font-pri:  rgba(20, 20, 20, 0.9);
+$color-font-sec:  #DDDDDD;
+$font-family:  "HP Simplified Light", "Helvetica", Arial, sans-serif;
+$font-family-url:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-base:  16px;
+
+$heading-ex: 50px;
+$heading: 40px;
+$h1: 35px;
+$h2: 30px;
+$h3: 25px;
+$h4: 22px;
+$font-base-lg: 18px;
+
+$margin-lg: 150px;
+$margin-md: 100px;
+$margin-semi-md: 70px;
+$margin-sm: 50px;
+$margin-ex-sm: 20px;
+
+$padding-lg: 150px;
+$padding-md: 100px;
+$padding-semi-md: 70px;
+$padding-sm: 50px;
+$padding-ex-sm: 20px;
+
+$extraMedium: 1100px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+$transition: all 0.3s ease-in-out;
+
+
+.fitler-container{
+  h2{
+    font-size: $h3;
+    font-family: $font-family;
+    margin-bottom: $margin-ex-sm;
+  }
+  .filters{
+    display: flex;
+    flex-direction: column;
+    .single-filter{
+      transition: $transition;
+      border-bottom: 2px solid $color-font-sec;
+    }
+    .top{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: $padding-ex-sm 0;
+    }
+    .range-slider{
+      display: flex;
+      flex-direction: column;
+      .range{
+        //display: none;
+        height: 0;
+          transition: $transition;
+          max-height: 0px;
+          overflow: hidden;
+        &.active{
+          height: 70px;
+          max-height: 200px;
+          transition: $transition;
+        }
+      }
+    }
+    .color-container{
+      height: 0;
+          transition: $transition;
+          max-height: 0px;
+          overflow: hidden;
+        &.active{
+          height: 70px;
+          max-height: 200px;
+          transition: $transition;
+        }
+    }
+    .checkBox-container{
+      height: 0;
+          transition: $transition;
+          max-height: 0px;
+          overflow: hidden;
+        &.active{
+          height: 70px;
+          max-height: 200px;
+          transition: $transition;
+        }
+    }
+  }
+  .clear-btn{
+    display: block;
+    text-align: left;
+    margin: $margin-ex-sm 0;
+    cursor: pointer;
+  }
+}

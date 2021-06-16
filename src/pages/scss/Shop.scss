@@ -1,5 +1,6 @@
 $color-pri:  #FFFFFF;
-$color-bg-sec:  rgba(51, 51, 51, 0.9);
+$color-bg-sec:  rgba(51, 51, 51, 1);
+$color-bg-hover:  rgba(51, 51, 51, 0.9);
 $color-font-pri:  rgba(20, 20, 20, 0.9);
 $color-font-sec:  #DDDDDD;
 $font-family:  "HP Simplified Light", "Helvetica", Arial, sans-serif;
@@ -25,3 +26,83 @@ $padding-md: 100px;
 $padding-semi-md: 70px;
 $padding-sm: 50px;
 $padding-ex-sm: 20px;
+
+$extraMedium: 1100px;
+$medium: 900px;
+$semiMedium: 700px;
+$small: 550px;
+$extraSmall: 450px;
+$transition: all 0.3s ease-in-out;
+
+
+.shop-container{
+    background-color: $color-pri;
+    text-align: center;
+    padding: $padding-sm 0;
+    .shop{
+        padding: 0 $padding-lg;
+        overflow: hidden;
+        @media screen and (max-width: $extraMedium) {
+            padding: 0 $padding-semi-md;
+        }
+        @media screen and (max-width: $extraSmall) {
+            padding: 0 $padding-ex-sm;
+        }
+        h1{
+            font-size: $heading;
+            color: $color-font-pri;
+            margin-bottom: $margin-sm;
+            display: inline-block;
+            letter-spacing: 5px;
+        }
+        .filter-btn-container{
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            .filter-btn{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: $h2;
+                width: 70px;
+                height: 50px;
+                background-color: $color-font-sec;
+                display: none;
+                @media screen and (max-width: $semiMedium) {
+                    display: flex;
+                }
+            }
+        }
+        
+        .content{
+            display: flex;
+            position: relative;
+            @media screen and (max-width: $semiMedium) {
+                flex-direction: column;
+            }
+            .filter{
+                flex: 1;
+                @media screen and (max-width: $semiMedium) {
+                    position: absolute;
+                    z-index: 5;
+                    //
+                    background-color: $color-font-sec;
+                    width: 100%;
+                    overflow: hidden;height: 0;
+                    transition: $transition;
+                    max-height: 0px;
+                    &.active{
+                    height: auto;
+                    max-height: 1000px;
+                    transition: $transition;
+                    padding: $padding-ex-sm;
+                    }
+                }
+            }
+            .product-container{
+                flex: 3;
+                overflow: hidden;
+            }
+        }
+    }
+}
