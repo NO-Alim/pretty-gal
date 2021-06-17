@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams,NavLink,Link } from 'react-router-dom'
 import './scss/SingleProduct.scss'
-import Products from '../data'
+import Products from '../SaleData'
 import SingelColor from '../component/SingelColor'
 import SizeSelect from '../component/SizeSelect'
 import Quantity from '../component/Quantity'
@@ -9,7 +9,7 @@ import {FaHeart,FaPlus,FaMinus,FaWhatsapp,FaFacebookF,FaTwitter,FaPinterestP} fr
 import { useState } from 'react'
 import CarouselSlider from '../component/CarouselSlider'
 
-const SingleProduct = () => {
+const SingleSale = () => {
     const {id} = useParams();
     const [info, setInfo] = useState(false);
     const [returnPolicy, setReturnPolicy] = useState(false);
@@ -19,7 +19,7 @@ const SingleProduct = () => {
         <>
             <div className="singleProduct-container">
                         {ThisProduct.map((item,ind) => {
-                            const {name,price,images,color,discretion} = item;
+                            const {name,price,priceTwo,images,color,discretion} = item;
                             return(
                             <div className="singleProduct" key={ind}>
                                 <div className="top-container">
@@ -29,7 +29,7 @@ const SingleProduct = () => {
                                             <span>/</span>
                                         </li>
                                         <li>
-                                            <NavLink to="/shop">Shop</NavLink>
+                                            <NavLink to="/sale">Sale</NavLink>
                                             <span>/</span>
                                         </li>
                                         <li>
@@ -45,7 +45,8 @@ const SingleProduct = () => {
                                     <div className="details">
                                         <h2>{name}</h2>
                                         <span className="id">{id}</span>
-                                        <h4 className="price">${price}</h4>
+                                        <h4 className="price main-price">${price}</h4>
+                                        <h4 className="price">${priceTwo}</h4>
                                         <div className="single-pro-color">
                                             <SingelColor color={color}/>
                                         </div>
@@ -104,4 +105,4 @@ const SingleProduct = () => {
     )
 }
 
-export default SingleProduct
+export default SingleSale

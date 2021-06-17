@@ -1,8 +1,16 @@
 import React,{useRef,useState,useEffect,useCallback} from 'react'
 import './sass/MultiSlider.scss'
 import PropTypes from "prop-types";
+import data from '../data'
 
-const MultiRangeSlider = ({ min, max }) => {
+
+const MultiRangeSlider = () => {
+
+    const max = data.reduce((acc, data) => acc = acc > data.price ? acc : data.price, 0);
+    const min = data.reduce((prev, curr) => {
+      return prev.price < curr.price ? prev.price : curr.price;
+    });
+
 
     const [minVal, setMinVal] = useState(min);
     const [maxVal, setMaxVal] = useState(max);

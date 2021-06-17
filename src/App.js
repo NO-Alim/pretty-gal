@@ -9,6 +9,7 @@ import Stockists from './pages/Stockists'
 import Error from './pages/Error'
 import Footer from './component/Footer';
 import SingleProduct from './pages/SingleProduct'
+import SingleSale from './pages/SingleSale'
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/product/:id">
           <SingleProduct />
+        </Route>
+        <Route path="/sale-product/:id">
+          <SingleSale />
         </Route>
         <Route path="*">
           <Error />

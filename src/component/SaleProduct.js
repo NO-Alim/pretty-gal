@@ -4,14 +4,15 @@ import './sass/Product.scss'
 import './sass/SaleProduct.scss'
 
 const SaleProduct = ({product}) => {
-    const {id,imageOne,imageTwo,price,name,discretion,priceTwo} = product
+    const {id,price,priceTwo,name,images} = product
+
     return (
         <>
             <div className="product">
                 <div className="img-container">
-                <img src={imageOne} alt="" />
+                <img src={images[0]} alt="" />
                 <div className="view">
-                    <Link to="*">Quick View</Link>
+                    <Link to={`/sale-product/${id}`}>Quick View</Link>
                 </div>
                 </div>
                 <div className="content">

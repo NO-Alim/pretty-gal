@@ -2,15 +2,22 @@ import React, { useEffect, useRef, useState } from 'react'
 import './sass/Navbar.scss'
 import {NavLink} from 'react-router-dom'
 import { FaUserAlt,FaShoppingBag} from 'react-icons/fa';
+import Cart from './Cart';
 
 
 const Navbar = () => {
 
-    const [toggleMenu, setToggleMenu] = useState(true);
+    const [toggleMenu, setToggleMenu] = useState(false);
+    const [toggleCart, setToggleCart] = useState(false)
     const navRef = useRef(null);
 
     const handleToggleBtn = () => {
         setToggleMenu(!toggleMenu)
+        setToggleCart(false)
+    }
+
+    const handleCartBtn = () => {
+        setToggleCart(!toggleCart);
     }
 
     const handleClick = (e) => {
@@ -78,9 +85,19 @@ const Navbar = () => {
                     <div className="user-container">
                         <div className="user-form">
                             <span><FaUserAlt /> User</span>
+                            
                         </div>
                         <div className="cart">
-                            <span><FaShoppingBag /></span>
+                            <span onClick={handleCartBtn}><FaShoppingBag /></span>
+                            <div className="cart-container">
+                                <div className={`cart-div ${toggleCart ? 'active' : null}`}>
+                                    <div className="cart-title">
+                                    <span onClick={handleCartBtn}></span>
+                                    <h2>cart</h2>
+                                    </div>
+                                    <Cart />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
