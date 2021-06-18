@@ -4,8 +4,17 @@ import MultiRangeSlider from './MultiRangeSlider'
 import {FaPlus,FaMinus} from 'react-icons/fa'
 import ColorFilter from './ColorFilter'
 import CheckBox from './CheckBox'
+import {useSelector} from 'react-redux'
 
 const FilterBy = () => {
+    const data = useSelector(state => state.SaleReducer.data);
+
+    const max = data.reduce((acc, data) => acc = acc > data.price ? acc : data.price, 0);
+    const min = data.reduce((prev, curr) => {
+      return prev.price < curr.price ? prev.price : curr.price;
+    });
+
+
     const [price, setPrice] = useState(false)
     const [color, setColor] = useState(false)
     const [check, setCheck] = useState(false);
@@ -21,7 +30,7 @@ const FilterBy = () => {
                         <span onClick={() => setPrice(!price)}>{price ? <FaMinus />: <FaPlus />}</span>
                     </div>
                     <div className={`range ${price ? 'active': null}`}>
-                    <MultiRangeSlider min={14} max={549} />
+                    <MultiRangeSlider min={min} max={max} />
                     </div>
                 </div>
                 <div className="color-filter single-filter">

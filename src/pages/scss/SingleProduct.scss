@@ -228,8 +228,9 @@ $transition: all 0.3s ease-in-out;
                     overflow: hidden;
                     transition: $transition;
                     &.active{
-                        height: auto;
+                        height: 250px;
                         max-height: 500px;
+                        transition: $transition;
                     }
 
                     .top-container{

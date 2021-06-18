@@ -10,6 +10,7 @@ const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false);
     const [toggleCart, setToggleCart] = useState(false)
     const navRef = useRef(null);
+    const cartRef = useRef(null);
 
     const handleToggleBtn = () => {
         setToggleMenu(!toggleMenu)
@@ -24,10 +25,14 @@ const Navbar = () => {
         if (!navRef.current.contains(e.target)) {
             setToggleMenu(false);
         }
+        if (!cartRef.current.contains(e.target)) {
+            setToggleCart(false);
+        }
     }
 
     const handleScroll = () => {
         setToggleMenu(false);
+        setToggleCart(false)
     }
 
     useEffect(() =>{
@@ -87,7 +92,7 @@ const Navbar = () => {
                             <span><FaUserAlt /> User</span>
                             
                         </div>
-                        <div className="cart">
+                        <div className="cart" ref={cartRef}>
                             <span onClick={handleCartBtn}><FaShoppingBag /></span>
                             <div className="cart-container">
                                 <div className={`cart-div ${toggleCart ? 'active' : null}`}>

@@ -1,22 +1,20 @@
 import React,{useRef,useState,useEffect,useCallback} from 'react'
+import {useDispatch,useSelector} from 'react-redux'
 import './sass/MultiSlider.scss'
-import PropTypes from "prop-types";
-import data from '../data'
+import {MinFilter,MaxFilter} from '../redux/action/allAction'
 
 
-const MultiRangeSlider = () => {
-
-    const max = data.reduce((acc, data) => acc = acc > data.price ? acc : data.price, 0);
-    const min = data.reduce((prev, curr) => {
-      return prev.price < curr.price ? prev.price : curr.price;
-    });
-
-
+const MultiRangeSlider = ({min,max}) => {
     const [minVal, setMinVal] = useState(min);
     const [maxVal, setMaxVal] = useState(max);
     const minValRef = useRef(min);
     const maxValRef = useRef(max);
     const range = useRef(null);
+
+    const dispatch = useDispatch();
+    const totos = useSelector(state => state.ShopReducer)
+
+
 
     // Convert to percentage
     const getPercent = useCallback(
@@ -28,6 +26,7 @@ const MultiRangeSlider = () => {
     useEffect(() => {
         const minPercent = getPercent(minVal);
         const maxPercent = getPercent(maxValRef.current);
+        //console.log(minVal);
 
         if (range.current) {
         range.current.style.left = `${minPercent}%`;
@@ -39,11 +38,19 @@ const MultiRangeSlider = () => {
     useEffect(() => {
         const minPercent = getPercent(minValRef.current);
         const maxPercent = getPercent(maxVal);
+        //console.log(maxVal);
 
         if (range.current) {
         range.current.style.width = `${maxPercent - minPercent}%`;
         }
+        
     }, [maxVal, getPercent]);
+
+    useEffect(() => {
+      dispatch(MinFilter(minVal));
+      dispatch(MaxFilter(maxVal));
+      console.log(totos);
+    }, [minVal,maxVal])
     return (
         <div className="container">
           <input

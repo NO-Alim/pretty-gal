@@ -6,7 +6,7 @@ import {FaFilter} from 'react-icons/fa'
 const Shop = () => {
     const [filterContainer, setFilterContainer] = useState(false);
     const filterRef = useRef(null)
-    const filterBtnRef = useRef(null)
+    const filterBtnRef = useRef(null);
 
     //for scroll & outClicking 
 

@@ -1,9 +1,10 @@
 import React,{useState} from 'react'
 import './sass/SaleProductList.scss'
-import data from '../SaleData'
 import SaleProduct from './SaleProduct'
+import {useSelector} from 'react-redux'
 
 const SaleProductList = () => {
+    const data = useSelector(state => state.SaleReducer.data)
     const [products, setProjects] = useState(data);
     return (
         <div className="productlist">

@@ -67,14 +67,14 @@ const SingleProduct = () => {
                                         <div className={`product-info accordion ${info ? 'active' : null}`}>
                                             <div className="top-container">
                                                 <h4>Product Info</h4>
-                                                <span onClick={() => setInfo(!info)}>{info ? <FaPlus /> : <FaMinus />}</span>
+                                                <span onClick={() => setInfo(!info)}>{info ? <FaMinus /> : <FaPlus />}</span>
                                             </div>
                                             <p>I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.</p>
                                         </div>
                                         <div className={`return-info accordion ${returnPolicy ? 'active' : null}`}>
                                             <div className="top-container">
                                                 <h4>Return And Refund policy</h4>
-                                                <span onClick={() => setReturnPolicy(!returnPolicy)}>{returnPolicy ? <FaPlus /> : <FaMinus />}</span>
+                                                <span onClick={() => setReturnPolicy(!returnPolicy)}>{returnPolicy ? <FaMinus /> : <FaPlus />}</span>
                                             </div>
                                             <p>I'm a product detail. I'm a great place to add more information about your product such as sizing, material, care and cleaning instructions. This is also a great space to write what makes this product special and how your customers can benefit from this item. Buyers like to know what they’re getting before they purchase, so give them as much information as possible so they can buy with confidence and certainty.</p>
                                         </div>
