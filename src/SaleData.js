@@ -13,6 +13,17 @@ const img9 = 'https://static.wixstatic.com/media/cda177_1fbd6bdcacca487d80040668
 const SaleProducts = [
     
     {
+        id: 5,
+        name: 'hello world',
+        images: [img5,img6],
+        imageTwo: '',
+        price: 343,
+        priceTwo: 343,
+        discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
+        color: ['red'],
+        size: 'large'
+    },
+    {
         id: 1,
         name: 'hello world',
         images: [img1,img2],
@@ -27,7 +38,7 @@ const SaleProducts = [
         name: 'hello world',
         images: [img2],
         price: 553,
-        priceTwo: 343,
+        priceTwo: 454,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
         color: ['Brown','black'],
         size: 'large'
@@ -38,10 +49,21 @@ const SaleProducts = [
         images: [img3,img4],
         imageTwo: null,
         price: 135,
-        priceTwo: 343,
+        priceTwo: 121,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
         color: ['red'],
         size: 'large'
+    },
+    
+    {
+        id: 6,
+        name: 'hello world',
+        images: [img6,img7],
+        price: 753,
+        priceTwo: 345,
+        discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
+        color: ['Purple'],
+        size: 'small'
     },
     {
         id: 4,
@@ -49,30 +71,9 @@ const SaleProducts = [
         images: [img4,img5],
         imageTwo: '',
         price: 677,
-        priceTwo: 343,
+        priceTwo: 257,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
         color: ['black'],
-        size: 'small'
-    },
-    {
-        id: 5,
-        name: 'hello world',
-        images: [img5,img6],
-        imageTwo: '',
-        price: 343,
-        priceTwo: 343,
-        discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['red'],
-        size: 'large'
-    },
-    {
-        id: 6,
-        name: 'hello world',
-        images: [img6,img7],
-        price: 753,
-        priceTwo: 343,
-        discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['Purple'],
         size: 'small'
     },
     {
@@ -80,7 +81,7 @@ const SaleProducts = [
         name: 'hello world',
         images: [img8,img9],
         price: 235,
-        priceTwo: 343,
+        priceTwo: 212,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
         color: ['red'],
         size: 'large'

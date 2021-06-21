@@ -1,6 +1,6 @@
 import React,{useState, useEffect, useRef} from 'react'
 import './scss/Sale.scss'
-import FilterBy from '../component/FilterBy'
+import SaleFilterBy from '../component/SaleFilterBy'
 import ProductList from '../component/ProductList'
 import {FaFilter} from 'react-icons/fa'
 import SaleProductList from '../component/SaleProductList'
@@ -19,7 +19,7 @@ const Sale = () => {
                     </div>
                     <div className="content">
                         <div className={`filter ${filterContainer ? 'active' : null}` } ref={filterRef}>
-                            <FilterBy />
+                            <SaleFilterBy />
                         </div>
                         <div className="product-container">
                             <SaleProductList />

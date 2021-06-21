@@ -1,14 +1,18 @@
 import React,{useState} from 'react'
 import './sass/SaleProductList.scss'
 import SaleProduct from './SaleProduct'
-import {useSelector} from 'react-redux'
+import { useGlobalContext } from '../context'
 
 const SaleProductList = () => {
-    const data = useSelector(state => state.SaleReducer.data)
-    const [products, setProjects] = useState(data);
+    const {saleData} = useGlobalContext();
+    if (saleData.length < 1) {
+        return (
+            <h1>No Sale product found!</h1>
+        )
+    }
     return (
         <div className="productlist">
-            {products.map((product,ind) => {
+            {saleData.map((product,ind) => {
                     return(
                         <div key={ind}>
                             <SaleProduct product={product}/>

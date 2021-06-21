@@ -7,28 +7,6 @@ const Shop = () => {
     const [filterContainer, setFilterContainer] = useState(false);
     const filterRef = useRef(null)
     const filterBtnRef = useRef(null);
-
-    //for scroll & outClicking 
-
-    // const handleClick = (e) => {
-    //     if (!filterRef.current.contains(e.target) && !filterBtnRef.current.contains(e.target)) {
-    //         setFilterContainer(false);
-    //     }
-    // }
-
-    // const handleScroll = () => {
-    //     setFilterContainer(false);
-    // }
-
-    // useEffect(() =>{
-    //     window.addEventListener('scroll', handleScroll);
-    //     document.addEventListener('click', handleClick)
-
-    //     return () =>{
-    //         window.removeEventListener('scroll', handleScroll)
-    //         document.removeEventListener('click', handleClick)
-    //     }
-    // })
     return (
         <>
             <div className="shop-container">

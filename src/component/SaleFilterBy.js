@@ -4,15 +4,16 @@ import MultiRangeSlider from './MultiRangeSlider'
 import {FaPlus,FaMinus} from 'react-icons/fa'
 import ColorFilter from './ColorFilter'
 import CheckBox from './CheckBox'
+import data from '../SaleData'
 import { useGlobalContext } from '../context'
-import data from '../data'
 
-const FilterBy = () => {
+const SaleFilterBy = () => {
     const {hoverColor} = useGlobalContext();
-    const max = data.reduce((acc, data) => acc = acc > data.price ? acc : data.price, 0);
+
+    const max = data.reduce((acc, data) => acc = acc > data.priceTwo ? acc : data.priceTwo, 0);
     
     const min = Math.min.apply(null, data.map((item) => {
-        return item.price
+        return item.priceTwo
     }))
 
     const [price, setPrice] = useState(false)
@@ -58,4 +59,4 @@ const FilterBy = () => {
     )
 }
 
-export default FilterBy
+export default SaleFilterBy

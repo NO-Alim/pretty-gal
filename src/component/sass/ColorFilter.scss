@@ -38,6 +38,7 @@ $transition: all 0.3s ease-in-out;
 .colors{
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
     .color{
         width: 20px;
         height: 20px;
@@ -45,8 +46,21 @@ $transition: all 0.3s ease-in-out;
         border-radius: 50%;
         cursor: pointer;
         transition: $transition;
+        transform: scale(1);
+        display: block;
         &.active{
-            transform: scale(1.5);
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                width: 14px;
+                height: 6px;
+                border-left: 2px solid rgb(0, 255, 42);
+                border-bottom: 2px solid rgb(0, 255, 42);
+                top: 2px;
+                left: 0;
+                transform: rotate(-45deg);
+            }
         }
     }
 }

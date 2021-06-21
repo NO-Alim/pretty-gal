@@ -1,20 +1,21 @@
 import React from 'react'
 import { useParams,NavLink,Link } from 'react-router-dom'
 import './scss/SingleProduct.scss'
-import Products from '../SaleData'
 import SingelColor from '../component/SingelColor'
 import SizeSelect from '../component/SizeSelect'
 import Quantity from '../component/Quantity'
 import {FaHeart,FaPlus,FaMinus,FaWhatsapp,FaFacebookF,FaTwitter,FaPinterestP} from 'react-icons/fa'
 import { useState } from 'react'
 import CarouselSlider from '../component/CarouselSlider'
+import { useGlobalContext } from '../context'
 
 const SingleSale = () => {
+    const {saleData} = useGlobalContext();
     const {id} = useParams();
     const [info, setInfo] = useState(false);
     const [returnPolicy, setReturnPolicy] = useState(false);
 
-    const ThisProduct = Products.filter(Product => Product.id == id);
+    const ThisProduct = saleData.filter(Product => Product.id == id);
     return (
         <>
             <div className="singleProduct-container">

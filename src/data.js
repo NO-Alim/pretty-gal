@@ -34,7 +34,7 @@ const projects = [
         name: 'hello world',
         images: [img3,img4],
         imageTwo: null,
-        price: 135,
+        price: 125,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
         color: ['red'],
         size: 'large'
