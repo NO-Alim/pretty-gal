@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react'
-import { useParams,NavLink,Link } from 'react-router-dom'
+import { useParams,NavLink,Link,useHistory } from 'react-router-dom'
 import './scss/SingleProduct.scss'
 import SingelColor from '../component/SingelColor'
 import SizeSelect from '../component/SizeSelect'
@@ -7,34 +7,83 @@ import Quantity from '../component/Quantity'
 import {FaHeart,FaPlus,FaMinus,FaWhatsapp,FaFacebookF,FaTwitter,FaPinterestP} from 'react-icons/fa'
 import CarouselSlider from '../component/CarouselSlider'
 import { useGlobalContext } from '../context'
+import { logDOM } from '@testing-library/react'
+import loader from 'sass-loader'
 
 const SingleProduct = () => {
-    const {shopData,cartItem, setCartItem,itemSize,itemQuantity} = useGlobalContext();
+    let history = useHistory();
+    const {shopData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,cartList, setCartList} = useGlobalContext();
     const {id} = useParams();
     const [info, setInfo] = useState(false);
     const [returnPolicy, setReturnPolicy] = useState(false);
     const ThisProduct = shopData.filter(Product => Product.id == id);
 
 
+        //for skip duplicates
+        const getUniqueListBy =(arr, key)=> {
+            return [...new Map(arr.map(item => [item[key], item])).values()]
+        }
+
+        const localData = JSON.parse(localStorage.getItem('cartList'));
+        //console.log(localData);
+        //console.log(cartItem.cartId);
+        
+
+        //concat in localstorage 
+        const appendToStorage = (name, data) => {
+        var prevItems = localStorage.getItem(name)
+        try{
+            prevItems = JSON.parse(prevItems);
+        } catch (e){
+            prevItems = []
+        }
+        localStorage.setItem(name, JSON.stringify(prevItems.concat(data)))
+    }
 
 
     const handleAddCart = () => {
-        console.log(cartItem);
+        if (localStorage.getItem('cartList') === null) {
+            localStorage.setItem('cartList',JSON.stringify(cartList))
+        }
+        if (cartItem.size && cartItem.quantity) {
+            //here condation
+            if (!localData) {
+                appendToStorage('cartList', cartItem)
+            }else if (localData.some((item) => item.cartId === cartItem.cartId)) {
+                console.log('hello');
+            } else {
+                appendToStorage('cartList', cartItem)
+            }
+
+
+
+            //end
+            console.log(cartItem.cartId);
+            //appendToStorage('cartList', cartItem)
+            history.push('/shop')
+            setItemSize(null)
+        } else{
+            console.log('nothing');
+        }
+        //setCartList(cartList.concat(cartItem));
+        const storageCart = localStorage.getItem('cartList');
     }
 
     useEffect(() => {
-        const thisname = ThisProduct.map((item) =>{
+        const itemName = ThisProduct.map((item) =>{
             return item
         });
         setCartItem({
-            name: thisname.name,
-            cartId: `shop${thisname.id}`,
-            price: thisname.price,
+            name: itemName[0].name,
+            cartId: `shop${itemName[0].id}`,
+            type: 'shop',
+            typeId: itemName[0].id,
+            price: itemName[0].price,
             size: itemSize,
-            quantity: itemQuantity
+            quantity: itemQuantity,
+            img: itemName[0].images[0]
         })
-        console.log('hey');
-    },[itemSize, itemQuantity])
+    },[itemSize, itemQuantity,]);
     
     return (
         <>

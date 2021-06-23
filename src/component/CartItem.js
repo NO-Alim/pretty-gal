@@ -8,30 +8,41 @@ const CartItem = () => {
             setItemQuantity(itemQuantity - 1)
         }
     }
+    const localData = JSON.parse(localStorage.getItem('cartList'))
+    //if no product 
+    if (!localData) {
+        return(
+            <h4>nothing is added to cart.</h4>
+        )
+    }
 
-    // const onChange = (e) => {
-    //     if (quantity < 1) {
-    //         setQuantity(1)
-    //     } else {
-    //         setQuantity(e.target.value)
-    //     }
-    // }
+    //for skip duplicates
+    const getUniqueListBy =(arr, key)=> {
+        return [...new Map(arr.map(item => [item[key], item])).values()]
+    }
+
+    const cartList = getUniqueListBy(localData, 'cartId');
     return (
         <div>
-            <div className="item">
-                <div className="cart-img-container">
-                    <img src="https://static.wixstatic.com/media/cda177_f95b14c95d6446de847782f0b6fd0027.png/v1/fill/w_96,h_96,q_85,usm_0.66_1.00_0.01/cda177_f95b14c95d6446de847782f0b6fd0027.webp" alt="" />
-                </div>
-                <div className="cart-details">
-                    <h3 className="name">Product Name</h3>
-                    <strong>$33.00</strong>
-                    <div className="item-quantity">
-                        <span className="increment count-btn" onClick={decrement}>-</span>
-                        <input type="number" value={itemQuantity} />
-                        <span className="decrement count-btn" onClick={() => setItemQuantity(itemQuantity + 1)}>+</span>
+            {cartList.map((item,ind) =>{
+                const {name,cartId,price,type,typeId,img} = item;
+                return(
+                    <div className="item" key={ind}>
+                        <div className="cart-img-container">
+                            <img src={img} alt="" />
+                        </div>
+                        <div className="cart-details">
+                            <h3 className="name">{name}</h3>
+                            <strong>${price}</strong>
+                            <div className="item-quantity">
+                                <span className="increment count-btn" onClick={decrement}>-</span>
+                                <input type="number" value={itemQuantity} />
+                                <span className="decrement count-btn" onClick={() => setItemQuantity(itemQuantity + 1)}>+</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                )
+            })}
         </div>
     )
 }

@@ -15,13 +15,8 @@ const SizeSelect = () => {
 
     const handleChange = selectedOption => {
         setSelectedOption(selectedOption);
+        setItemSize(selectedOption.value)
     }
-    useEffect(() => {
-        const handleEffect = (selectedOption) => {
-            setItemSize(selectedOption);
-        }
-        handleEffect();
-    },[selectedOption])
     return (
         <>
             <div className="size-container">

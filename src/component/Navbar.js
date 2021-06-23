@@ -32,7 +32,7 @@ const Navbar = () => {
 
     const handleScroll = () => {
         setToggleMenu(false);
-        setToggleCart(false)
+        //setToggleCart(false)
     }
 
     useEffect(() =>{
