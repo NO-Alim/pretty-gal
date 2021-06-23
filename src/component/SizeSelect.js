@@ -1,5 +1,6 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Select from 'react-select';
+import { useGlobalContext } from '../context';
 import './sass/SizeSelect.scss'
 
 const options = [
@@ -10,11 +11,17 @@ const options = [
 
 const SizeSelect = () => {
     const [selectedOption, setSelectedOption] = useState(null);
+    const {setItemSize} = useGlobalContext();
 
     const handleChange = selectedOption => {
-        setSelectedOption(selectedOption)
-        console.log(selectedOption.value);
+        setSelectedOption(selectedOption);
     }
+    useEffect(() => {
+        const handleEffect = (selectedOption) => {
+            setItemSize(selectedOption);
+        }
+        handleEffect();
+    },[selectedOption])
     return (
         <>
             <div className="size-container">

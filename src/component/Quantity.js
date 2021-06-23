@@ -1,14 +1,20 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
+import { useGlobalContext } from '../context'
 import './sass/Quantity.scss'
 
 const Quantity = () => {
     const [quantity, setQuantity] = useState(1)
+    const {setItemQuantity} = useGlobalContext();
 
     const decrement = () => {
         if(quantity > 1){
             setQuantity(quantity - 1)
         }
     }
+
+    useEffect(() =>{
+        setItemQuantity(quantity);
+    },[quantity])
 
     // const onChange = (e) => {
     //     if (quantity < 1) {

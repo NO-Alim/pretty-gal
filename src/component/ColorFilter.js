@@ -3,48 +3,56 @@ import { FaBlackberry } from 'react-icons/fa'
 import './sass/ColorFilter.scss'
 import AllColor from '../colorData'
 import { useGlobalContext } from '../context'
+import ShopData from '../data'
+import SaleData from '../SaleData'
 
 const ColorFilter = () => {
-    const {hoverColor, setHoverColor} = useGlobalContext();
+    const {hoverColor, setHoverColor,setShopData,setSaleData} = useGlobalContext();
     const [colors, setColors] = useState(AllColor);
     const [activeId, setActiveId] = useState([
-        1,2
     ]);
+    const [selectedColor , setSelectedColor] = useState([]);
 
-    const addOrRemove = (e) =>{
-        if (activeId.includes(e.target.value)) {
-            console.log('match');
-        }
-        if (!activeId.includes(e.target.value)) {
-            console.log("doesn't match");
-        }
+
+
+    const handleClick = () => {
+        console.log("nothing");
     }
+    useEffect(() =>{
+        let filterShopData = ShopData.filter(e => e.color.filter(c => selectedColor.includes(c)).length > 0);
+        let filterSaleData = SaleData.filter(e => e.color.filter(c=> selectedColor.includes(c)).length > 0)
+        if (selectedColor.length < 1) {
+            setShopData(ShopData);
+            setSaleData(SaleData)
+        } else {
+            setShopData(filterShopData)
+            setSaleData(filterSaleData)
+        }
+    },[selectedColor])
 
-    useEffect(() => {
-        //filter products
-        console.log(activeId);
-    },[activeId])
+
     return (
         <>
          <div className="colors">
              {colors.map((color,ind) => {
                  return (
-                    //  toggle value into array
-                    //activeId = [1,2,3....]
-                        <button className={`color ${activeId.includes(color.id) ? 'active': null}`} key={ind} style={{background: `${color.hex}`}}  onClick={() => {if (activeId.includes(color.id)) {
-                            const arr = activeId.filter((item)=>{
-                                return item !== color.id
-                            })
-                            setActiveId(arr);
-                        }
-                        else{
-                        setActiveId(activeId.concat(color.id))
-                    }}} onMouseOver={() => setHoverColor(color.name)} onMouseOut={() => setHoverColor(null)} value={color.id}></button>
-                    )
+                     
+                    // eslint-disable-next-line no-lone-blocks
+                    <button className={`color ${selectedColor.includes(color.name) ? 'active': null}`} key={ind} style={{background: `${color.hex}`}}  onClick={() => {{if (selectedColor.includes(color.name)) {
+                        const arr = selectedColor.filter((item)=>{
+                            return item !== color.name
+                        })
+                        setSelectedColor(arr);
+                    }
+                    else{
+                    setSelectedColor(selectedColor.concat(color.name))
+                }};handleClick()}} onMouseOver={() => setHoverColor(color.name)} onMouseOut={() => setHoverColor(null)} value={color.name}></button>
+                )
              })}
-        </div>   
+        </div>
         </>
     )
 }
 
 export default ColorFilter
+

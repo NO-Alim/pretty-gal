@@ -20,7 +20,7 @@ const SaleProducts = [
         price: 343,
         priceTwo: 343,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['red'],
+        color: ['Red'],
         size: 'large'
     },
     {
@@ -30,7 +30,7 @@ const SaleProducts = [
         price: 234,
         priceTwo: 343,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['green','red'],
+        color: ['Green','Red'],
         size: 'medium'
     },
     {
@@ -40,7 +40,7 @@ const SaleProducts = [
         price: 553,
         priceTwo: 454,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['Brown','black'],
+        color: ['Brown','Black'],
         size: 'large'
     },
     {
@@ -51,7 +51,7 @@ const SaleProducts = [
         price: 135,
         priceTwo: 121,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['red'],
+        color: ['Red'],
         size: 'large'
     },
     
@@ -73,7 +73,7 @@ const SaleProducts = [
         price: 677,
         priceTwo: 257,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['black'],
+        color: ['Black'],
         size: 'small'
     },
     {
@@ -83,7 +83,7 @@ const SaleProducts = [
         price: 235,
         priceTwo: 212,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['red'],
+        color: ['Red'],
         size: 'large'
     }
 

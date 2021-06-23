@@ -1,21 +1,41 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import { useParams,NavLink,Link } from 'react-router-dom'
 import './scss/SingleProduct.scss'
 import SingelColor from '../component/SingelColor'
 import SizeSelect from '../component/SizeSelect'
 import Quantity from '../component/Quantity'
 import {FaHeart,FaPlus,FaMinus,FaWhatsapp,FaFacebookF,FaTwitter,FaPinterestP} from 'react-icons/fa'
-import { useState } from 'react'
 import CarouselSlider from '../component/CarouselSlider'
 import { useGlobalContext } from '../context'
 
 const SingleProduct = () => {
-    const {shopData} = useGlobalContext();
+    const {shopData,cartItem, setCartItem,itemSize,itemQuantity} = useGlobalContext();
     const {id} = useParams();
     const [info, setInfo] = useState(false);
     const [returnPolicy, setReturnPolicy] = useState(false);
-
     const ThisProduct = shopData.filter(Product => Product.id == id);
+
+
+
+
+    const handleAddCart = () => {
+        console.log(cartItem);
+    }
+
+    useEffect(() => {
+        const thisname = ThisProduct.map((item) =>{
+            return item
+        });
+        setCartItem({
+            name: thisname.name,
+            cartId: `shop${thisname.id}`,
+            price: thisname.price,
+            size: itemSize,
+            quantity: itemQuantity
+        })
+        console.log('hey');
+    },[itemSize, itemQuantity])
+    
     return (
         <>
             <div className="singleProduct-container">
@@ -34,7 +54,7 @@ const SingleProduct = () => {
                                             <span>/</span>
                                         </li>
                                         <li>
-                                            <NavLink to="#" >Name</NavLink>
+                                            <NavLink to="#" >{name}</NavLink>
                                         </li>
                                     </ul>
                                 </div>
@@ -60,7 +80,7 @@ const SingleProduct = () => {
                                         </div>
                                         <div className="main-btn-container">
                                             <div className="button-group">
-                                                <button className="add-btn">Add Cart</button>
+                                                <button className="add-btn" onClick={() => {handleAddCart();setCartItem({name: name})}}>Add Cart</button>
                                                 <button className="like-btn"><FaHeart /></button>
                                             </div>
                                                 <button className="buy">Buy Now</button>

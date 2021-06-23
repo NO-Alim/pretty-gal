@@ -13,55 +13,55 @@ const img9 = 'https://static.wixstatic.com/media/cda177_1fbd6bdcacca487d80040668
 const projects = [
     {
         id: 1,
-        name: 'hello world',
+        name: 'one',
         images: [img1,img2],
         price: 234,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['green','red'],
+        color: ['Green','Red'],
         size: 'medium'
     },
     {
         id: 2,
-        name: 'hello world',
+        name: 'two',
         images: [img2],
         price: 553,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['Brown','black'],
+        color: ['Brown','Black'],
         size: 'large'
     },
     {
         id: 3,
-        name: 'hello world',
+        name: 'three',
         images: [img3,img4],
         imageTwo: null,
         price: 125,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['red'],
+        color: ['Red'],
         size: 'large'
     },
     {
         id: 4,
-        name: 'hello world',
+        name: 'four',
         images: [img4,img5],
         imageTwo: '',
         price: 677,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['black'],
+        color: ['Black'],
         size: 'small'
     },
     {
         id: 5,
-        name: 'hello world',
+        name: 'five',
         images: [img5,img6],
         imageTwo: '',
         price: 343,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['red'],
+        color: ['Red'],
         size: 'large'
     },
     {
         id: 6,
-        name: 'hello world',
+        name: 'six',
         images: [img6,img7],
         price: 753,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
@@ -70,11 +70,11 @@ const projects = [
     },
     {
         id: 7,
-        name: 'hello world',
+        name: 'seven',
         images: [img8,img9],
         price: 235,
         discretion: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eligendi possimus porro veniam magnam nisi perspiciatis quas quasi et nobis!',
-        color: ['red'],
+        color: ['Red'],
         size: 'large'
     }
 
