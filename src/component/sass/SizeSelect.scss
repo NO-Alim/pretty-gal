@@ -43,4 +43,31 @@ $transition: all 0.3s ease-in-out;
         font-family: $font-family;
         margin-bottom: 10px;
     }
+    .warning{
+        display: block;
+        width: 50%;
+        text-align: center;
+        padding: 8px 0;
+        margin: 15px auto;
+        border-radius: 5px;
+        background-color: red;
+        color: $color-pri;
+        font-family: $font-family;
+        position: relative;
+        transition: $transition;
+        opacity: 0;
+        &::after{
+            position: absolute;
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            left: 50%;
+            top: -10px;
+            transform: translateX(-50%) rotate(45deg);
+        }
+        &.active{
+            opacity: 1;
+        }
+    }
 }

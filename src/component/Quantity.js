@@ -3,8 +3,8 @@ import { useGlobalContext } from '../context'
 import './sass/Quantity.scss'
 
 const Quantity = () => {
-    const [quantity, setQuantity] = useState(1)
-    const {setItemQuantity} = useGlobalContext();
+    const {itemQuantity,setItemQuantity} = useGlobalContext();
+    const [quantity, setQuantity] = useState(itemQuantity)
 
     const decrement = () => {
         if(quantity > 1){

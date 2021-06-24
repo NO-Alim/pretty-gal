@@ -7,30 +7,22 @@ import Quantity from '../component/Quantity'
 import {FaHeart,FaPlus,FaMinus,FaWhatsapp,FaFacebookF,FaTwitter,FaPinterestP} from 'react-icons/fa'
 import CarouselSlider from '../component/CarouselSlider'
 import { useGlobalContext } from '../context'
-import { logDOM } from '@testing-library/react'
-import loader from 'sass-loader'
+//import { logDOM } from '@testing-library/react'
+//import loader from 'sass-loader'
 
 const SingleProduct = () => {
     let history = useHistory();
-    const {shopData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,cartList, setCartList} = useGlobalContext();
+    const {shopData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,cartList,setSelectWarning} = useGlobalContext();
     const {id} = useParams();
     const [info, setInfo] = useState(false);
     const [returnPolicy, setReturnPolicy] = useState(false);
     const ThisProduct = shopData.filter(Product => Product.id == id);
 
+    const localData = JSON.parse(localStorage.getItem('cartList'));
 
-        //for skip duplicates
-        const getUniqueListBy =(arr, key)=> {
-            return [...new Map(arr.map(item => [item[key], item])).values()]
-        }
 
-        const localData = JSON.parse(localStorage.getItem('cartList'));
-        //console.log(localData);
-        //console.log(cartItem.cartId);
-        
-
-        //concat in localstorage 
-        const appendToStorage = (name, data) => {
+    //this append function for concat 
+    const appendToStorage = (name, data) => {
         var prevItems = localStorage.getItem(name)
         try{
             prevItems = JSON.parse(prevItems);
@@ -40,33 +32,41 @@ const SingleProduct = () => {
         localStorage.setItem(name, JSON.stringify(prevItems.concat(data)))
     }
 
+    // const updateStorage =(keyName, newkeypairs=[]) =>{
+    //     const obj = JSON.parse(localStorage.getItem(keyName));
+    //     newkeypairs.map(n => obj[Object.keys(n)] = Object.values(n)[0]);
+    //     localStorage.setItem(keyName,JSON.stringify(obj));
+    // }
+
+
+
 
     const handleAddCart = () => {
+        //when there is no array stored
         if (localStorage.getItem('cartList') === null) {
             localStorage.setItem('cartList',JSON.stringify(cartList))
         }
         if (cartItem.size && cartItem.quantity) {
-            //here condation
+            //1st when there is no array
             if (!localData) {
                 appendToStorage('cartList', cartItem)
-            }else if (localData.some((item) => item.cartId === cartItem.cartId)) {
-                console.log('hello');
+            } else if (localData.some((item) => item.cartId === cartItem.cartId)) {
+                //when array contain same object
+                var itemPrice = localData.find((item) => item.cartId === cartItem.cartId);
+                
+                //updateStorage('cartList',[{quantity: 5}])
             } else {
+                //concat new object
                 appendToStorage('cartList', cartItem)
             }
 
-
-
-            //end
-            console.log(cartItem.cartId);
-            //appendToStorage('cartList', cartItem)
             history.push('/shop')
             setItemSize(null)
+            setSelectWarning(false);
         } else{
             console.log('nothing');
+            setSelectWarning(true)
         }
-        //setCartList(cartList.concat(cartItem));
-        const storageCart = localStorage.getItem('cartList');
     }
 
     useEffect(() => {
@@ -84,6 +84,8 @@ const SingleProduct = () => {
             img: itemName[0].images[0]
         })
     },[itemSize, itemQuantity,]);
+
+    console.log(itemQuantity);
     
     return (
         <>
@@ -175,3 +177,36 @@ const SingleProduct = () => {
 }
 
 export default SingleProduct
+
+
+
+
+
+
+// const handleAddCart = () => {
+//     //if there is no array stored
+//     if (localStorage.getItem('cartList') === null) {
+//         localStorage.setItem('cartList',JSON.stringify(cartList))
+//     }
+//     if (cartItem.size && cartItem.quantity) {
+//         //here condation
+//         if (!localData) {
+//             appendToStorage('cartList', cartItem)
+//         }else if (localData.some((item) => item.cartId === cartItem.cartId)) {
+//             console.log('hello');
+//             var itemPrice = localData.find((item) => item.cartId === cartItem.cartId);
+            
+//         } else {
+//             appendToStorage('cartList', cartItem)
+//         }
+
+//         history.push('/shop')
+//         setItemSize(null)
+//         setSelectWarning(false);
+//     } else{
+//         console.log('nothing');
+//         setSelectWarning(true)
+//     }
+//     //setCartList(cartList.concat(cartItem));
+//     const storageCart = localStorage.getItem('cartList');
+// }

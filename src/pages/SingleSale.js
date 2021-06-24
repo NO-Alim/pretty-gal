@@ -1,21 +1,81 @@
-import React from 'react'
-import { useParams,NavLink,Link } from 'react-router-dom'
+import React, {useState, useEffect } from 'react'
+import { useParams,NavLink,Link,useHistory } from 'react-router-dom'
 import './scss/SingleProduct.scss'
 import SingelColor from '../component/SingelColor'
 import SizeSelect from '../component/SizeSelect'
 import Quantity from '../component/Quantity'
 import {FaHeart,FaPlus,FaMinus,FaWhatsapp,FaFacebookF,FaTwitter,FaPinterestP} from 'react-icons/fa'
-import { useState } from 'react'
 import CarouselSlider from '../component/CarouselSlider'
 import { useGlobalContext } from '../context'
 
 const SingleSale = () => {
-    const {saleData} = useGlobalContext();
+    let history = useHistory();
+    const {saleData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,cartList, setCartList,setSelectWarning} = useGlobalContext();
+
+
     const {id} = useParams();
     const [info, setInfo] = useState(false);
     const [returnPolicy, setReturnPolicy] = useState(false);
 
     const ThisProduct = saleData.filter(Product => Product.id == id);
+
+    const localData = JSON.parse(localStorage.getItem('cartList'));
+
+    //this append func for concat 
+    const appendToStorage = (name, data) => {
+        var prevItems = localStorage.getItem(name)
+        try{
+            prevItems = JSON.parse(prevItems);
+        } catch (e){
+            prevItems = []
+        }
+        localStorage.setItem(name, JSON.stringify(prevItems.concat(data)))
+    }
+
+
+    const handleAddCart = () => {
+        if (localStorage.getItem('cartList') === null) {
+            localStorage.setItem('cartList',JSON.stringify(cartList))
+        }
+        if (cartItem.size && cartItem.quantity) {
+            //here condation && this condation work help to skip duplicate store
+            if (!localData) {
+                appendToStorage('cartList', cartItem)
+            }else if (localData.some((item) => item.cartId === cartItem.cartId)) {
+                console.log('hello');
+            } else {
+                appendToStorage('cartList', cartItem)
+            }
+            //end
+            console.log(cartItem.cartId);
+            //appendToStorage('cartList', cartItem)
+            history.push('/sale')
+            setItemSize(null)
+            setSelectWarning(false)
+        } else{
+            setSelectWarning(true)
+        }
+        //setCartList(cartList.concat(cartItem));
+        const storageCart = localStorage.getItem('cartList');
+    }
+
+
+
+    useEffect(() => {
+        const itemName = ThisProduct.map((item) =>{
+            return item
+        });
+        setCartItem({
+            name: itemName[0].name,
+            cartId: `sale${itemName[0].id}`,
+            type: 'sale',
+            typeId: itemName[0].id,
+            price: itemName[0].price,
+            size: itemSize,
+            quantity: itemQuantity,
+            img: itemName[0].images[0]
+        })
+    },[itemSize, itemQuantity,]);
     return (
         <>
             <div className="singleProduct-container">
@@ -61,7 +121,7 @@ const SingleSale = () => {
                                         </div>
                                         <div className="main-btn-container">
                                             <div className="button-group">
-                                                <button className="add-btn">Add Cart</button>
+                                                <button className="add-btn" onClick={() => {handleAddCart();setCartItem({name: name})}}>Add Cart</button>
                                                 <button className="like-btn"><FaHeart /></button>
                                             </div>
                                                 <button className="buy">Buy Now</button>

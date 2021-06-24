@@ -19,9 +19,11 @@ const ColorFilter = () => {
         console.log("nothing");
     }
     useEffect(() =>{
+        //filter data which is include selected color name
         let filterShopData = ShopData.filter(e => e.color.filter(c => selectedColor.includes(c)).length > 0);
         let filterSaleData = SaleData.filter(e => e.color.filter(c=> selectedColor.includes(c)).length > 0)
         if (selectedColor.length < 1) {
+            //if color not a single color selected 
             setShopData(ShopData);
             setSaleData(SaleData)
         } else {

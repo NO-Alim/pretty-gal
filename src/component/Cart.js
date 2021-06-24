@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './sass/Cart.scss'
 import CartItem from './CartItem'
+import { useGlobalContext } from '../context'
 
 const Cart = () => {
+    const {totalPrice} = useGlobalContext();
     return (
         <>
             <div className="cart-items-container">
@@ -11,7 +13,7 @@ const Cart = () => {
                 </div>
                 <div className="subtotal-container">
                     <h2>Subtotal</h2>
-                    <span>$4524</span>
+                    <span>${totalPrice}</span>
                 </div>
                 <div className="button-container">
                     <button>Viwe cart</button>

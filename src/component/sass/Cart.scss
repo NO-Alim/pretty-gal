@@ -107,6 +107,23 @@ $transition: all 0.3s ease-in-out;
                     }
                 }
             }
+            .cart-delete{
+                width: 20px;
+                height: 20px;
+                position: relative;
+                margin-right: 10px;
+                opacity: 0;
+                transition: $transition;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+            }
+            &:hover .cart-delete{
+                opacity: 1;
+            }
+            &:focus{
+                outline: none;
+            }
         }
     }
     .subtotal-container{

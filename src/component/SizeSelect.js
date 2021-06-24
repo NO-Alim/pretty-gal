@@ -11,17 +11,32 @@ const options = [
 
 const SizeSelect = () => {
     const [selectedOption, setSelectedOption] = useState(null);
-    const {setItemSize} = useGlobalContext();
+    const {setItemSize,selectWarning, setSelectWarning} = useGlobalContext();
 
     const handleChange = selectedOption => {
         setSelectedOption(selectedOption);
-        setItemSize(selectedOption.value)
+        setItemSize(selectedOption.value);
+        setSelectWarning(false)
     }
+
+    // useEffect(() =>{
+    //     const timeout = () => {
+    //         setTimeout(() => {
+    //             setSelectWarning(false)
+    //         }, 3000);
+    //     }
+
+    //     timeout();
+    //     return(
+    //         timeout()
+    //     )
+    // },[selectWarning])
     return (
         <>
             <div className="size-container">
                 <p>size</p>
             <Select options={options} value={selectedOption} onChange={handleChange}/>
+            <span className={`warning ${selectWarning ? 'active' : null}`}>Please select your size</span>
             </div>
         </>
     )

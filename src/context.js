@@ -24,10 +24,12 @@ const AppProvider = ({children}) => {
     })
     const [itemSize, setItemSize] = useState('');
     const [itemColor, setItemColor] = useState('');
-    const [itemQuantity, setItemQuantity] = useState(null);
+    const [itemQuantity, setItemQuantity] = useState(5);
     const [cartList, setCartList] = useState([]);
+    const [totalPrice, setTotalPrice] = useState();
+    const [selectWarning, setSelectWarning] = useState(false)
 
-    return <AppContext.Provider value={{shopData, setShopData,saleData, setSaleData,hoverColor, setHoverColor,cartItem, setCartItem,itemSize, setItemSize,itemColor, setItemColor,itemQuantity, setItemQuantity,cartList, setCartList}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{shopData, setShopData,saleData, setSaleData,hoverColor, setHoverColor,cartItem, setCartItem,itemSize, setItemSize,itemColor, setItemColor,itemQuantity, setItemQuantity,cartList, setCartList,totalPrice, setTotalPrice,selectWarning, setSelectWarning}}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {
