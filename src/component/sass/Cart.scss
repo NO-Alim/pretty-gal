@@ -84,11 +84,14 @@ $transition: all 0.3s ease-in-out;
                     height: 40px;
                     border: 1px solid $color-bg-sec;
                     display: flex;
-                    justify-content: space-around;
+                    flex-direction: row;
                     align-items: center;
+                    justify-content: space-around;
                     span{
                         font-size: $h2;
                         cursor: pointer;
+                        display: flex;
+                        align-items: center;
                     }
                     .quantity{
                         font-size: $font-base-lg;

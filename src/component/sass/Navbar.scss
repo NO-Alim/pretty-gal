@@ -192,7 +192,25 @@ nav{
                 }
             }
             .cart{
-                font-size: $h3;
+                font-size: $h2;
+                .cart-icon{
+                    cursor: pointer;
+                    .item-number{
+                        margin-left: -22px;
+                        margin-top: 10px;
+                        font-size: $font-base;
+                        font-weight: bold;
+                        height: 20px;
+                        width: 15px;
+                        //color: $color-bg-sec;
+                        color: red;
+                        background: transparent;
+                        border-radius: 10px;
+                        z-index: 0;
+                        position: absolute;
+                        text-align: center;
+                    }
+                }
                 .cart-container{
                     position: relative;
                     .cart-div{
@@ -218,8 +236,8 @@ nav{
                             align-items: center;
                             span{
                                 flex: 1;
-                                
                                 position: relative;
+                                cursor: pointer;
                                 &::after{
                                     position: absolute;
                                     content: '';

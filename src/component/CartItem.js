@@ -4,6 +4,7 @@ import {FaTimes} from 'react-icons/fa'
 
 const CartItem = () => {
     const [pordeuctItems, setPordeuctItems] = useState([]);
+    //this counter is dome. there is no uses in the component. it's only use for page refresh and update all cart data.
     const [counter, setCounter] = useState(1);
 
     const {setTotalPrice,refreshCart} = useGlobalContext();
@@ -29,6 +30,7 @@ const CartItem = () => {
                     }
                 }
                 localStorage.setItem('cartList',JSON.stringify(sameItem))
+            setCounter(counter + 1)
     }
 
     const decrementQuantity = (cartId) => {
@@ -44,6 +46,7 @@ const CartItem = () => {
                     }
                 }
                 localStorage.setItem('cartList',JSON.stringify(sameItem))
+            setCounter(counter - 1)
     }
 
     useEffect(() => {
