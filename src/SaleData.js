@@ -14,7 +14,7 @@ const SaleProducts = [
     
     {
         id: 5,
-        name: 'hello world',
+        name: 'sale Five',
         images: [img5,img6],
         imageTwo: '',
         price: 343,
@@ -25,7 +25,7 @@ const SaleProducts = [
     },
     {
         id: 1,
-        name: 'hello world',
+        name: 'sale One',
         images: [img1,img2],
         price: 234,
         priceTwo: 343,
@@ -35,7 +35,7 @@ const SaleProducts = [
     },
     {
         id: 2,
-        name: 'hello world',
+        name: 'sale two',
         images: [img2],
         price: 553,
         priceTwo: 454,
@@ -45,7 +45,7 @@ const SaleProducts = [
     },
     {
         id: 3,
-        name: 'hello world',
+        name: 'sale three',
         images: [img3,img4],
         imageTwo: null,
         price: 135,
@@ -57,7 +57,7 @@ const SaleProducts = [
     
     {
         id: 6,
-        name: 'hello world',
+        name: 'sale six',
         images: [img6,img7],
         price: 753,
         priceTwo: 345,
@@ -67,7 +67,7 @@ const SaleProducts = [
     },
     {
         id: 4,
-        name: 'hello world',
+        name: 'sale four',
         images: [img4,img5],
         imageTwo: '',
         price: 677,
@@ -78,7 +78,7 @@ const SaleProducts = [
     },
     {
         id: 7,
-        name: 'hello world',
+        name: 'sale seven',
         images: [img8,img9],
         price: 235,
         priceTwo: 212,

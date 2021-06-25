@@ -3,11 +3,10 @@ import { useGlobalContext } from '../context'
 import {FaTimes} from 'react-icons/fa'
 
 const CartItem = () => {
-    const xyz = JSON.parse(localStorage.getItem('cartList'))
-    const {setTotalPrice} = useGlobalContext();
-    const [mycart, setMycart] = useState(xyz)
-    const [trigger, setTrigger] = useState(1)
-    //delete button
+    const [pordeuctItems, setPordeuctItems] = useState([]);
+    const [counter, setCounter] = useState(1);
+
+    const {setTotalPrice,refreshCart} = useGlobalContext();
     const deleteCartItem = (cartId) => {
         //var index = -1;
         var obj = JSON.parse(localStorage.getItem("cartList"));
@@ -18,38 +17,62 @@ const CartItem = () => {
           }
         }
         localStorage.setItem("cartList", JSON.stringify(obj));
-        setTrigger(2);
+        setCounter(counter + 1)
     }
-    useEffect(() =>{
-        const localData = JSON.parse(localStorage.getItem('cartList'))
-        setMycart(localData);
-        console.log("hello");
-        setTrigger(1)
-    },[trigger])
 
+    const incrementQuantity = (cartId) => {
+        var sameItem = JSON.parse(localStorage.cartList);
+                for(var i = 0;i < sameItem.length; i++){
+                    if (cartId === sameItem[i].cartId) {
+                        sameItem[i].quantity += 1;
+                        break;
+                    }
+                }
+                localStorage.setItem('cartList',JSON.stringify(sameItem))
+    }
+
+    const decrementQuantity = (cartId) => {
+        var sameItem = JSON.parse(localStorage.cartList);
+                for(var i = 0;i < sameItem.length; i++){
+                    if (cartId === sameItem[i].cartId) {
+                        if (sameItem[i].quantity <= 1) {
+                            sameItem[i].quantity = 1;
+                        } else {
+                            sameItem[i].quantity -= 1;
+                        }
+                        break;
+                    }
+                }
+                localStorage.setItem('cartList',JSON.stringify(sameItem))
+    }
+
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem('cartList'));
+        setPordeuctItems(data);
+    },[counter,refreshCart])
     
 
-    //increment decrement must be work with localstorage not context itemquentity.
-
-    //for skip duplicates
-    //here don't need UniqList bcs of our localstore is already Uniq.
-    // const getUniqueListBy =(arr, key)=> {
-    //     return [...new Map(arr.map(item => [item[key], item])).values()]
-    // }
-    // const cartList = getUniqueListBy(localData, 'cartId');
-    
-    
-    
+    //setprice
+    if (pordeuctItems) {
+        if (pordeuctItems.length < 1) {
+            setTotalPrice(0)
+        }
+        else {
+            const getTotalPrice = pordeuctItems.map(item => item.price * item.quantity).reduce((prev, next) => prev + next);
+            setTotalPrice(getTotalPrice);
+        }
+        
+    }
     //if no product 
-    if (mycart.length < 1) {
+    if (!pordeuctItems || pordeuctItems.length < 1) {
         return(
-            <h4>nothing is added to cart.</h4>
+            <h4>Not a Single Item Add Yet!!!</h4>
         )
     }
 
     return (
         <div>
-            {mycart.map((item,ind) =>{
+            {pordeuctItems.map((item,ind) =>{
                 const {name,img, price, quantity,cartId} = item;
                 return(
                     <div className="item" key={ind}>
@@ -60,12 +83,12 @@ const CartItem = () => {
                             <h3 className="name">{name}</h3>
                             <strong>${price}</strong>
                             <div className="item-quantity">
-                                <span className="increment count-btn">-</span>
-                                <input type="number" value={quantity} />
-                                <span className="decrement count-btn">+</span>
+                                <span className="increment count-btn" onClick={() => decrementQuantity(cartId)}>-</span>
+                                <span className="quantity">{quantity}</span>
+                                <span className="decrement count-btn" onClick={() => incrementQuantity(cartId)}>+</span>
                             </div>
                         </div>
-                        <button className="cart-delete" onClick={() => deleteCartItem(cartId)}><FaTimes /></button>
+                        <button className="cart-delete" onClick={() => {deleteCartItem(cartId)}}><FaTimes /></button>
                     </div>
                 )
             })}

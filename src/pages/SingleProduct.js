@@ -21,7 +21,7 @@ const SingleProduct = () => {
     const localData = JSON.parse(localStorage.getItem('cartList'));
 
 
-    //this append function for concat 
+    //this append function for concat
     const appendToStorage = (name, data) => {
         var prevItems = localStorage.getItem(name)
         try{
@@ -51,10 +51,17 @@ const SingleProduct = () => {
             if (!localData) {
                 appendToStorage('cartList', cartItem)
             } else if (localData.some((item) => item.cartId === cartItem.cartId)) {
-                //when array contain same object
-                var itemPrice = localData.find((item) => item.cartId === cartItem.cartId);
-                
-                //updateStorage('cartList',[{quantity: 5}])
+                // //when array contain same object
+                // //var itemPrice = localData.find((item) => item.cartId === cartItem.cartId);
+                var sameItem = JSON.parse(localStorage.cartList);
+                for(var i = 0;i < sameItem.length; i++){
+                    if (cartItem.cartId === sameItem[i].cartId) {
+                        sameItem[i].quantity += cartItem.quantity;
+                        break;
+                    }
+                }
+                localStorage.setItem('cartList',JSON.stringify(sameItem))
+
             } else {
                 //concat new object
                 appendToStorage('cartList', cartItem)
@@ -86,7 +93,7 @@ const SingleProduct = () => {
     },[itemSize, itemQuantity,]);
 
     console.log(itemQuantity);
-    
+
     return (
         <>
             <div className="singleProduct-container">
@@ -195,7 +202,7 @@ export default SingleProduct
 //         }else if (localData.some((item) => item.cartId === cartItem.cartId)) {
 //             console.log('hello');
 //             var itemPrice = localData.find((item) => item.cartId === cartItem.cartId);
-            
+
 //         } else {
 //             appendToStorage('cartList', cartItem)
 //         }

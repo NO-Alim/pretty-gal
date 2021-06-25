@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './sass/Cart.scss'
 import CartItem from './CartItem'
 import { useGlobalContext } from '../context'
 
 const Cart = () => {
     const {totalPrice} = useGlobalContext();
+    
     return (
         <>
             <div className="cart-items-container">

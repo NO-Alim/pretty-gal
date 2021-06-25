@@ -42,7 +42,14 @@ const SingleSale = () => {
             if (!localData) {
                 appendToStorage('cartList', cartItem)
             }else if (localData.some((item) => item.cartId === cartItem.cartId)) {
-                console.log('hello');
+                var sameItem = JSON.parse(localStorage.cartList);
+                for(var i = 0;i < sameItem.length; i++){
+                    if (cartItem.cartId === sameItem[i].cartId) {
+                        sameItem[i].quantity += cartItem.quantity;
+                        break;
+                    }
+                }
+                localStorage.setItem('cartList',JSON.stringify(sameItem))
             } else {
                 appendToStorage('cartList', cartItem)
             }

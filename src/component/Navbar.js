@@ -3,6 +3,7 @@ import './sass/Navbar.scss'
 import {NavLink} from 'react-router-dom'
 import { FaUserAlt,FaShoppingBag} from 'react-icons/fa';
 import Cart from './Cart';
+import { useGlobalContext } from '../context';
 
 
 const Navbar = () => {
@@ -11,6 +12,7 @@ const Navbar = () => {
     const [toggleCart, setToggleCart] = useState(false)
     const navRef = useRef(null);
     const cartRef = useRef(null);
+    const {refreshCart, setRefreshCart} = useGlobalContext();
 
     const handleToggleBtn = () => {
         setToggleMenu(!toggleMenu)
@@ -19,6 +21,7 @@ const Navbar = () => {
 
     const handleCartBtn = () => {
         setToggleCart(!toggleCart);
+        setRefreshCart(refreshCart + 1); 
     }
 
     const handleClick = (e) => {
