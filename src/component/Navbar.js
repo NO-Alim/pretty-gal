@@ -1,15 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './sass/Navbar.scss'
 import {NavLink} from 'react-router-dom'
-import { FaUserAlt,FaShoppingBag} from 'react-icons/fa';
+import { FaUserAlt,FaShoppingBag, FaTimes} from 'react-icons/fa';
 import Cart from './Cart';
 import { useGlobalContext } from '../context';
+import Modal from 'react-modal'
+import ModalContent from './ModalContent';
+import Headroom from 'react-headroom'
+
+Modal.setAppElement("#root");
 
 
 const Navbar = () => {
 
     const [toggleMenu, setToggleMenu] = useState(false);
     const [toggleCart, setToggleCart] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const navRef = useRef(null);
     const cartRef = useRef(null);
     const {refreshCart, setRefreshCart} = useGlobalContext();
@@ -19,11 +25,13 @@ const Navbar = () => {
     const handleToggleBtn = () => {
         setToggleMenu(!toggleMenu)
         setToggleCart(false)
+        setIsModalOpen(false)
     }
 
     const handleCartBtn = () => {
         setToggleCart(!toggleCart);
         setRefreshCart(refreshCart + 1); 
+        setIsModalOpen(false)
     }
 
     const handleClick = (e) => {
@@ -40,6 +48,10 @@ const Navbar = () => {
         //setToggleCart(false)
     }
 
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    }
+
     useEffect(() =>{
         window.addEventListener('scroll', handleScroll);
         document.addEventListener('click', handleClick)
@@ -51,6 +63,7 @@ const Navbar = () => {
     })
     return (
         <>
+        <Headroom>
             <nav   ref={navRef}>
                 <div className="nav-container">
                     <div className="logo-container">
@@ -94,8 +107,18 @@ const Navbar = () => {
                     </div>
                     <div className="user-container">
                         <div className="user-form">
-                            <span><FaUserAlt /> User</span>
-                            
+                            <span onClick={toggleModal}><FaUserAlt /> User</span>
+                            <Modal
+                            isOpen={isModalOpen}
+                            onRequestClose={toggleModal}
+                            contentLabel="My dialog" className="modal">
+                                <div>
+                                    <div className="close-btn-container">
+                                        <span onClick={toggleModal} className="modal-close"><FaTimes /></span>
+                                    </div>
+                                    <ModalContent />
+                                </div>
+                            </Modal>
                         </div>
                         <div className="cart" ref={cartRef}>
                             <div onClick={handleCartBtn} className="cart-icon">
@@ -115,6 +138,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
+        </Headroom>
         </>
     )
 }

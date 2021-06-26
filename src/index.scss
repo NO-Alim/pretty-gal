@@ -41,4 +41,6 @@
         width: calc(100vw - (100vw - 100%));
         min-height: 100vh;
         background-color: $color-pri;
+        overflow-x: hidden;
+        margin: 0;
     }
