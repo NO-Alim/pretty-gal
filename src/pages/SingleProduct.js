@@ -4,23 +4,30 @@ import './scss/SingleProduct.scss'
 import SingelColor from '../component/SingelColor'
 import SizeSelect from '../component/SizeSelect'
 import Quantity from '../component/Quantity'
-import {FaHeart,FaPlus,FaMinus,FaWhatsapp,FaFacebookF,FaTwitter,FaPinterestP} from 'react-icons/fa'
+import {FaHeart,FaPlus,FaMinus,FaWhatsapp,FaFacebookF,FaTwitter,FaPinterestP,FaTimes} from 'react-icons/fa'
 import CarouselSlider from '../component/CarouselSlider'
 import { useGlobalContext } from '../context'
+import Modal from 'react-modal'
 //import { logDOM } from '@testing-library/react'
 //import loader from 'sass-loader'
-
+Modal.setAppElement("#root");
 const SingleProduct = () => {
     let history = useHistory();
     const {shopData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,setItemQuantity,cartList,setSelectWarning} = useGlobalContext();
     const {id} = useParams();
     const [info, setInfo] = useState(false);
     const [returnPolicy, setReturnPolicy] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const ThisProduct = shopData.filter(Product => Product.id == id);
 
     const localData = JSON.parse(localStorage.getItem('cartList'));
 
 
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    }
     //this append function for concat
     const appendToStorage = (name, data) => {
         var prevItems = localStorage.getItem(name)
@@ -142,7 +149,22 @@ const SingleProduct = () => {
                                                 <button className="add-btn" onClick={() => {handleAddCart();setCartItem({name: name})}}>Add Cart</button>
                                                 <button className="like-btn"><FaHeart /></button>
                                             </div>
-                                                <button className="buy">Buy Now</button>
+                                                <button className="buy" onClick={toggleModal}>Buy Now</button>
+                                                <Modal
+                                                    isOpen={isModalOpen}
+                                                    onRequestClose={toggleModal}
+                                                    contentLabel="My dialog" className="modal">
+                                                        <div>
+                                                            <div className="close-btn-container">
+                                                                <span onClick={toggleModal} className="modal-close"><FaTimes /></span>
+                                                            </div>
+                                                            <div className="modal-content">
+                                                                <h2>Opps!!!</h2>
+                                                                <h4>we are working this section. Please keep support us & add your favourite item in your cart.</h4>
+                                                                <Link to="/">Home</Link>
+                                                            </div>
+                                                        </div>
+                                                </Modal>
                                         </div>
                                         <div className={`product-info accordion ${info ? 'active' : null}`}>
                                             <div className="top-container">

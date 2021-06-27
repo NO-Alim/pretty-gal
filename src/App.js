@@ -10,6 +10,7 @@ import Error from './pages/Error'
 import Footer from './component/Footer';
 import SingleProduct from './pages/SingleProduct'
 import SingleSale from './pages/SingleSale'
+import CartFullView from './pages/CartFullView';
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path="/sale-product/:id">
           <SingleSale />
+        </Route>
+        <Route path="/CartFullView">
+          <CartFullView />
         </Route>
         <Route path="*">
           <Error />

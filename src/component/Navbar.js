@@ -20,7 +20,7 @@ const Navbar = () => {
     const cartRef = useRef(null);
     const {refreshCart, setRefreshCart} = useGlobalContext();
     var cartList = JSON.parse(localStorage.getItem("cartList"));
-    var cartListLength = cartList.length;
+    //var cartListLength = cartList.length;
 
     const handleToggleBtn = () => {
         setToggleMenu(!toggleMenu)

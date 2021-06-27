@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import './sass/Cart.scss'
 import CartItem from './CartItem'
 import { useGlobalContext } from '../context'
+import { useHistory } from 'react-router-dom'
 
 const Cart = () => {
     const {totalPrice} = useGlobalContext();
-    
+    let history = useHistory();
+    const handleClick = () => {
+        history.push("/CartFullView")
+    }
     return (
         <>
             <div className="cart-items-container">
@@ -17,7 +21,7 @@ const Cart = () => {
                     <span>${totalPrice}</span>
                 </div>
                 <div className="button-container">
-                    <button>Viwe cart</button>
+                    <button onClick={() => handleClick()}>Viwe cart</button>
                 </div>
             </div>
         </>
