@@ -199,31 +199,35 @@ nav{
                 .cart-icon{
                     cursor: pointer;
                     z-index: 1;
-                    .item-number{
-                        font-size: $font-base;
-                        font-weight: bold;
-                        height: 20px;
-                        width: 15px;
-                        color: $color-bg-sec;
-                        background-color: $color-pri;
-                        border-radius: 10px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
+                    // .item-number{
+                    //     font-size: $font-base;
+                    //     font-weight: bold;
+                    //     height: 20px;
+                    //     width: 15px;
+                    //     color: $color-bg-sec;
+                    //     background-color: $color-pri;
+                    //     border-radius: 10px;
+                    //     display: flex;
+                    //     align-items: center;
+                    //     justify-content: center;
+                    //     margin-left: -10px;
+                    // }
                 }
                 .cart-container{
                     overflow:hidden;
                     .cart-div{
                             position: absolute;
                             height: 100vh;
-                            width: 40vw;
+                            width: 30vw;
                             top: 0;
                             right: -100%;
                             transition: $transition;
                         @media screen and (max-width: $medium) {
                             position: fixed;
                             width: 50vw;
+                        }
+                        @media screen and (max-width: $semiMedium) {
+                            width: 60vw;
                         }
                         @media screen and (max-width: $extraSmall) {
                             width: 100%;

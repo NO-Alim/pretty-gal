@@ -123,7 +123,7 @@ const Navbar = () => {
                         <div className="cart" ref={cartRef}>
                             <div onClick={handleCartBtn} className="cart-icon">
                                 <FaShoppingBag />
-                                <sapn className="item-number">{cartListLength}</sapn>
+                                {/* <span className="item-number">1</span> */}
                             </div>
                             <div className="cart-container">
                                 <div className={`cart-div ${toggleCart ? 'active' : null}`}>
