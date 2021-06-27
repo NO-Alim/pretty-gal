@@ -5,10 +5,11 @@ import { useGlobalContext } from '../context'
 import { useHistory } from 'react-router-dom'
 
 const Cart = () => {
-    const {totalPrice} = useGlobalContext();
+    const {totalPrice,toggleCart, setToggleCart} = useGlobalContext();
     let history = useHistory();
     const handleClick = () => {
-        history.push("/CartFullView")
+        history.push("/CartFullView");
+        setToggleCart(false)
     }
     return (
         <>

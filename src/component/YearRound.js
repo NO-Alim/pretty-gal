@@ -16,14 +16,27 @@ const YearRound = () => {
                     <h1>YEAR ROUND</h1>
                     <p className="semi-heading">Must Have Items</p>
                     <div className="items">
-                        {data.map((item,ind) => {
-                            return (
-                                <article key={ind}>
-                                    <img src={item} alt="item" />
-                                    <Link to="/">Item tag</Link>
-                                </article>
-                            )
-                        })}
+                        <article>
+                            <img src={img1} alt="item" />
+                            <Link to="/shop">Explore More</Link>
+                            <div className="offer">
+                                <h2>New Arrival</h2>
+                            </div>
+                        </article>
+                        <article>
+                            <img src={img2} alt="item" />
+                            <Link to="/sale">Sale off</Link>
+                            <div className="offer">
+                                <h2>Up to 30% off</h2>
+                            </div>
+                        </article>
+                        <article>
+                            <img src={img3} alt="item" />
+                            <Link to="/shop">view all</Link>
+                            <div className="offer">
+                                <h2>accessories</h2>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>

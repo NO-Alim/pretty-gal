@@ -12,13 +12,12 @@ Modal.setAppElement("#root");
 
 
 const Navbar = () => {
-
+    
     const [toggleMenu, setToggleMenu] = useState(false);
-    const [toggleCart, setToggleCart] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navRef = useRef(null);
     const cartRef = useRef(null);
-    const {refreshCart, setRefreshCart} = useGlobalContext();
+    const {refreshCart, setRefreshCart, toggleCart, setToggleCart} = useGlobalContext();
     var cartList = JSON.parse(localStorage.getItem("cartList"));
     //var cartListLength = cartList.length;
 
@@ -50,6 +49,7 @@ const Navbar = () => {
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
+        setToggleMenu(false)
     }
 
     useEffect(() =>{
@@ -78,9 +78,13 @@ const Navbar = () => {
                             <span className="menu-one"></span>
                         </div>
                     </div>
+                    
                     {/* link container */}
                     <div className={`link-container ${toggleMenu ? 'active' : null}`}>
                         <ul>
+                            <li className="side-nav-user">
+                                <span onClick={toggleModal}><FaUserAlt /> User</span>
+                            </li>
                             <li>
                                 <NavLink to="/" exact={true} onClick={handleScroll}>Home</NavLink>
                             </li>

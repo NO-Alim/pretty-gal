@@ -10,6 +10,7 @@ const AppProvider = ({children}) => {
     const [shopData, setShopData] = useState(data);
     const [saleData, setSaleData] = useState(saledata);
     const [hoverColor, setHoverColor] = useState('');
+    const [toggleCart, setToggleCart] = useState(false)
     const [cartItem, setCartItem] = useState({
         name: 'none',
         cartId: '',
@@ -30,7 +31,7 @@ const AppProvider = ({children}) => {
     const [selectWarning, setSelectWarning] = useState(false)
     const [refreshCart, setRefreshCart] = useState(1);
 
-    return <AppContext.Provider value={{shopData, setShopData,saleData, setSaleData,hoverColor, setHoverColor,cartItem, setCartItem,itemSize, setItemSize,itemColor, setItemColor,itemQuantity, setItemQuantity,cartList, setCartList,totalPrice, setTotalPrice,selectWarning, setSelectWarning,refreshCart, setRefreshCart}}>{children}</AppContext.Provider>
+    return <AppContext.Provider value={{shopData, setShopData,saleData, setSaleData,hoverColor, setHoverColor,cartItem, setCartItem,itemSize, setItemSize,itemColor, setItemColor,itemQuantity, setItemQuantity,cartList, setCartList,totalPrice, setTotalPrice,selectWarning, setSelectWarning,refreshCart, setRefreshCart,toggleCart, setToggleCart}}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {

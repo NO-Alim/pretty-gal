@@ -300,6 +300,14 @@ nav{
                 }
             }
         }
+
+        .side-nav-user{
+            display: none;
+            @media screen and (max-width: $medium) {
+                display: block;
+                font-size: 25px;
+            }
+        }
     }
 }
 
@@ -329,6 +337,7 @@ nav{
         .modal-close{
             display: inline-block;
             color: $color-font-pri;
+            cursor: pointer;
         }
     }
     .modal-content{

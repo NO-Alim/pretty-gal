@@ -93,8 +93,9 @@ $transition: all 0.3s ease-in-out;
                     justify-content: center;
                     margin-top: $margin-ex-sm;
                     transition: $transition;
+                    border: 1px solid $color-bg-sec;
                     &:hover{
-                        background-color: $color-pri;
+                        background-color: $color-back;
                         color: $color-bg-sec;
                     }
                 }
