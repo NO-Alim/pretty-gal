@@ -12,7 +12,7 @@ import { useGlobalContext } from '../context'
 
 const SingleProduct = () => {
     let history = useHistory();
-    const {shopData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,cartList,setSelectWarning} = useGlobalContext();
+    const {shopData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,setItemQuantity,cartList,setSelectWarning} = useGlobalContext();
     const {id} = useParams();
     const [info, setInfo] = useState(false);
     const [returnPolicy, setReturnPolicy] = useState(false);
@@ -70,6 +70,7 @@ const SingleProduct = () => {
             history.push('/shop')
             setItemSize(null)
             setSelectWarning(false);
+            setItemQuantity(1)
         } else{
             console.log('nothing');
             setSelectWarning(true)

@@ -10,7 +10,7 @@ import { useGlobalContext } from '../context'
 
 const SingleSale = () => {
     let history = useHistory();
-    const {saleData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,cartList, setCartList,setSelectWarning} = useGlobalContext();
+    const {saleData,cartItem, setCartItem,itemSize,setItemSize,itemQuantity,setItemQuantity,cartList, setCartList,setSelectWarning} = useGlobalContext();
 
 
     const {id} = useParams();
@@ -59,6 +59,7 @@ const SingleSale = () => {
             history.push('/sale')
             setItemSize(null)
             setSelectWarning(false)
+            setItemQuantity(1)
         } else{
             setSelectWarning(true)
         }
