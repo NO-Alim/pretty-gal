@@ -129,20 +129,20 @@ const Navbar = () => {
                                 <FaShoppingBag />
                                 {/* <span className="item-number">1</span> */}
                             </div>
-                            <div className="cart-container">
-                                <div className={`cart-div ${toggleCart ? 'active' : null}`}>
-                                    <div className="cart-title">
-                                    <span onClick={handleCartBtn}></span>
-                                    <h2>cart</h2>
-                                    </div>
-                                    <Cart />
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </nav>
         </Headroom>
+        <div className="cart-container">
+            <div className={`cart-div ${toggleCart ? 'active' : null}`}>
+                <div className="cart-title">
+                <span onClick={handleCartBtn}></span>
+                <h2>cart</h2>
+                </div>
+                <Cart />
+            </div>
+        </div>
         </>
     )
 }

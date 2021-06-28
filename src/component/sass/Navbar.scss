@@ -213,60 +213,7 @@ nav{
                     //     margin-left: -10px;
                     // }
                 }
-                .cart-container{
-                    overflow:hidden;
-                    .cart-div{
-                            position: absolute;
-                            height: 100vh;
-                            width: 30vw;
-                            top: 0;
-                            right: -100%;
-                            transition: $transition;
-                        @media screen and (max-width: $medium) {
-                            position: fixed;
-                            width: 50vw;
-                        }
-                        @media screen and (max-width: $semiMedium) {
-                            width: 60vw;
-                        }
-                        @media screen and (max-width: $extraSmall) {
-                            width: 100%;
-                        }
-            
-                        &.active{
-                            right: 0;
-                            transition: $transition;
-                        }
-                        .cart-title{
-                            display: block;
-                            background-color: $color-font-pri;
-                            display: flex;
-                            padding: $padding-ex-sm;
-                            align-items: center;
-                            span{
-                                flex: 1;
-                                position: relative;
-                                cursor: pointer;
-                                &::after{
-                                    position: absolute;
-                                    content: '';
-                                    width: 20px;
-                                    height: 20px;
-                                    border-right: 1px solid $color-pri;
-                                    border-top: 1px solid $color-pri;
-                                    transform: rotate(45deg);
-                                    top: -5px;
-                                }
-                            }
-                            h2{
-                                flex: 10;
-                                text-align: center;
-                            }
-                        }
-                    }
-                }
             }
-            
         }
 
         .menu-one-container{
@@ -313,7 +260,7 @@ nav{
 
 //modal
 
-
+//this modal style handle from CartFullView
 .modal{
     width: 40%;
     height: 70vh;
@@ -325,9 +272,12 @@ nav{
     padding: 50px;
     overflow: hidden;
     border: 1px solid $color-font-pri;
-    background-color: $color-pri;
+    background-color:$color-pri;
     @media screen and (max-width: $medium) {
         width: 60%;
+    }
+    @media screen and (max-width: $small) {
+        background-color: red;
     }
     &:focus{
         outline: none;
@@ -389,6 +339,67 @@ nav{
                 color: rgb(255, 125, 125);
                 cursor: pointer;
                 margin-left: 10px;
+            }
+        }
+    }
+}
+
+
+
+
+.cart-container{
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+    .cart-div{
+            position: fixed;
+            height: 100vh;
+            width: 30vw;
+            top: 0;
+            right: -100%;
+            transition: $transition;
+        @media screen and (max-width: $medium) {
+            position: fixed;
+            width: 50vw;
+        }
+        @media screen and (max-width: $semiMedium) {
+            width: 60vw;
+        }
+        @media screen and (max-width: $extraSmall) {
+            width: 100%;
+        }
+
+        &.active{
+            right: 0;
+            transition: $transition;
+        }
+        .cart-title{
+            display: block;
+            background-color: $color-font-pri;
+            display: flex;
+            padding: $padding-ex-sm;
+            align-items: center;
+            span{
+                flex: 1;
+                position: relative;
+                cursor: pointer;
+                &::after{
+                    position: absolute;
+                    content: '';
+                    width: 20px;
+                    height: 20px;
+                    border-right: 1px solid $color-pri;
+                    border-top: 1px solid $color-pri;
+                    transform: rotate(45deg);
+                    top: -5px;
+                }
+            }
+            h2{
+                flex: 10;
+                text-align: center;
+                color: $color-pri;
+                font-size: $h1;
+                font-family: $font-family;
             }
         }
     }

@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
-import {link} from 'react-router-dom'
+import {link, useHistory} from 'react-router-dom'
 
 const ModalContent = () => {
     const [signUp, setSignUp] = useState(false);
+    let location = useHistory();
+    const handleClick = () => {
+        location.push('/');
+    }
     return (
         <>
             <div className="modal-content">
@@ -21,7 +25,7 @@ const ModalContent = () => {
                     <form>
                         <input type="email" placeholder="Email"/>
                         <input type="password" placeholder="Password"/>
-                        <span>forgot password</span>
+                        <span onClick={() => handleClick()}>forgot password</span>
                         <input type="submit" />
                     </form>
                 </div>

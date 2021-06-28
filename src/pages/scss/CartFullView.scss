@@ -211,7 +211,8 @@ $transition: all 0.3s ease-in-out;
 
 .modal{
     width: 40%;
-    height: 70vh;
+    height: auto;
+    min-height: 70vh;
     max-height: 100vh;
     position: absolute;
     top: 50%;
@@ -223,6 +224,9 @@ $transition: all 0.3s ease-in-out;
     background-color: $color-pri;
     @media screen and (max-width: $medium) {
         width: 60%;
+    }
+    @media screen and (max-width: $small) {
+        width: 90%;
     }
     &:focus{
         outline: none;
