@@ -15,7 +15,7 @@ const Header = () => {
         <div className="header">
             <div className="header-container">
                 <div className="img-container">
-                    <img src={img3} alt="" />
+                    <img src={img1} alt="" />
                     <div className="content">
                         <h1>Winter Is Coming</h1>
                         <Link to="/shop" className="shop-btn btn">Shop Now</Link>
