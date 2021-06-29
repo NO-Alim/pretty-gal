@@ -145,7 +145,7 @@ const Navbar = () => {
             </nav>
         </Headroom>
 
-        <div className="my-cart">
+        <div>
         <div className="cart-container cart-ref" ref={cartContentRef}>              
             <div className={`cart-div ${toggleCart ? 'active' : null}`}>
                 <div className="cart-title">

@@ -87,6 +87,7 @@ $transition: all 0.3s ease-in-out;
             article{
                 position: relative;
                 transition: $transition;
+                cursor: pointer;
                 &:hover{
                     .offer{
                         transition: $transition;
