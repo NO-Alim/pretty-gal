@@ -1,14 +1,15 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import './sass/Product.scss'
 import './sass/SaleProduct.scss'
 
 const SaleProduct = ({product}) => {
     const {id,price,priceTwo,name,images} = product
+    const location = useHistory();
 
     return (
         <>
-            <div className="product">
+            <div className="product" onClick={() => location.push(`/sale-product/${id}`)}>
                 <div className="img-container">
                 <img src={images[0]} alt="" />
                 <div className="view">

@@ -41,6 +41,7 @@ $transition: all 0.3s ease-in-out;
     background-color: $color-font-sec;
     overflow: hidden;
     transition: $transition;
+    cursor: pointer;
     &:hover{
         img{
             transition: $transition;
