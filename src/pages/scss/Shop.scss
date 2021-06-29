@@ -59,6 +59,10 @@ $transition: all 0.3s ease-in-out;
             display: flex;
             justify-content: flex-end;
             margin-bottom: 10px;
+            display: none;
+                @media screen and (max-width: $semiMedium) {
+                    display: flex;
+                }
             .filter-btn{
                 display: flex;
                 align-items: center;
@@ -67,10 +71,6 @@ $transition: all 0.3s ease-in-out;
                 width: 70px;
                 height: 50px;
                 background-color: $color-font-sec;
-                display: none;
-                @media screen and (max-width: $semiMedium) {
-                    display: flex;
-                }
             }
         }
         

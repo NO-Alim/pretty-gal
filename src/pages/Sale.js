@@ -7,18 +7,38 @@ import SaleProductList from '../component/SaleProductList'
 
 const Sale = () => {
     const [filterContainer, setFilterContainer] = useState(false);
-    const filterRef = useRef(null)
-    const filterBtnRef = useRef(null)
+    const salefilterRef = useRef(null)
+    const salefilterBtnRef = useRef(null)
+
+    // const handleClick = (e) => {
+    //     if (salefilterBtnRef) {
+    //         if (!salefilterBtnRef.current.contains(e.target)){
+    //             if (salefilterRef.current.contains(e.target)) {
+    //                 setFilterContainer(true);
+    //             }else{
+    //                 setFilterContainer(false);
+    //             }
+    //         }
+    //     }
+    // }
+
+    // useEffect(() =>{
+    //     document.addEventListener('click', handleClick)
+
+    //     return () =>{
+    //         document.removeEventListener('click', handleClick)
+    //     }
+    // })
     return (
         <>
             <div className="shop-container">
                 <div className="shop">
                     <h1>Sale</h1>
-                    <div className="filter-btn-container">
-                        <span className="filter-btn" onClick={() => setFilterContainer(!filterContainer)} ref={filterBtnRef}><FaFilter /></span>
+                    <div className="filter-btn-container" ref={salefilterBtnRef}>
+                        <span className="filter-btn" onClick={() => setFilterContainer(!filterContainer)}><FaFilter /></span>
                     </div>
                     <div className="content">
-                        <div className={`filter ${filterContainer ? 'active' : null}` } ref={filterRef}>
+                        <div className={`filter ${filterContainer ? 'active' : null}` } ref={salefilterRef}>
                             <SaleFilterBy />
                         </div>
                         <div className="product-container">

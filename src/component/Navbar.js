@@ -17,6 +17,7 @@ const Navbar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navRef = useRef(null);
     const cartRef = useRef(null);
+    const cartContentRef = useRef(null);
     const {refreshCart, setRefreshCart, toggleCart, setToggleCart} = useGlobalContext();
     var cartList = JSON.parse(localStorage.getItem("cartList"));
     //var cartListLength = cartList.length;
@@ -37,8 +38,16 @@ const Navbar = () => {
         if (!navRef.current.contains(e.target)) {
             setToggleMenu(false);
         }
+        
         if (!cartRef.current.contains(e.target)) {
-            setToggleCart(false);
+            
+            if (!cartContentRef.current.contains(e.target)) {
+                setToggleCart(false)
+            }
+
+            // else{
+            //     setToggleCart(false)
+            // }
         }
     }
 
@@ -124,17 +133,20 @@ const Navbar = () => {
                                 </div>
                             </Modal>
                         </div>
-                        <div className="cart" ref={cartRef}>
+                        <div className="cart cart-ref" ref={cartRef}>
                             <div onClick={handleCartBtn} className="cart-icon">
                                 <FaShoppingBag />
                                 {/* <span className="item-number">1</span> */}
-                            </div>
+                                
                         </div>
                     </div>
                 </div>
+                </div>
             </nav>
         </Headroom>
-        <div className="cart-container">
+
+        <div className="my-cart">
+        <div className="cart-container cart-ref" ref={cartContentRef}>              
             <div className={`cart-div ${toggleCart ? 'active' : null}`}>
                 <div className="cart-title">
                 <span onClick={handleCartBtn}></span>
@@ -143,6 +155,8 @@ const Navbar = () => {
                 <Cart />
             </div>
         </div>
+        </div>
+        
         </>
     )
 }
