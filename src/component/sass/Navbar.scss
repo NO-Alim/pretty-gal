@@ -99,6 +99,7 @@ nav{
                 left: -100%;
                 padding: $padding-sm;
                 display: flex;
+                z-index: 10;
             }
             @media screen and (max-width: $extraSmall) {
                 position: fixed;
@@ -196,22 +197,26 @@ nav{
             
             .cart{
                 font-size: $h2;
+                position: relative;
                 .cart-icon{
                     cursor: pointer;
                     z-index: 1;
-                    // .item-number{
-                    //     font-size: $font-base;
-                    //     font-weight: bold;
-                    //     height: 20px;
-                    //     width: 15px;
-                    //     color: $color-bg-sec;
-                    //     background-color: $color-pri;
-                    //     border-radius: 10px;
-                    //     display: flex;
-                    //     align-items: center;
-                    //     justify-content: center;
-                    //     margin-left: -10px;
-                    // }
+                }
+                .item-number{
+                    position: absolute;
+                    font-size: $font-base;
+                    font-weight: bold;
+                    height: 20px;
+                    width: 15px;
+                    color: $color-pri;
+                    background-color: red;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: -40px;
+                    margin-left: 20px;
+                    z-index: 0;
                 }
             }
         }
