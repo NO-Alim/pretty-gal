@@ -20,7 +20,7 @@ const Navbar = () => {
     const cartContentRef = useRef(null);
     const {refreshCart, setRefreshCart, toggleCart, setToggleCart} = useGlobalContext();
     var cartList = JSON.parse(localStorage.getItem("cartList"));
-    var cartListLength = cartList.length;
+    //var cartListLength = cartList.length;
 
     const handleToggleBtn = () => {
         setToggleMenu(!toggleMenu)
@@ -137,7 +137,7 @@ const Navbar = () => {
                             <div onClick={handleCartBtn} className="cart-icon">
                                 <FaShoppingBag />
                             </div>
-                            <span className="item-number">{cartListLength}</span>
+                            <span className="item-number">{cartList ? `${cartList.length}` : '0'}</span>
                     </div>
                 </div>
                 </div>
